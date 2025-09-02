@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  # Base de données pour le développement
+  database:
+    image: mongo:7
+    container_name: coworkspace-db-dev
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: coworkspace_dev
+    volumes:
+      - mongodb_dev_data:/data/db
+      - ./data:/docker-entrypoint-initdb.d/data
+    ports:
+      - "27017:27017"
+    networks:
+      - coworkspace-dev-network
+
+  # Backend en mode développement
+  backend-dev:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: coworkspace-api-dev
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      DATABASE_URL: mongodb://admin:password@database:27017/coworkspace_dev?authSource=admin
+      JWT_SECRET: dev-secret-key
+      JWT_EXPIRES_IN: 24h
+      CORS_ORIGIN: http://localhost:5173
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+      - ./backend/uploads:/app/uploads
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+    networks:
+      - coworkspace-dev-network
+    command: npm run dev
+
+  # Frontend en mode développement
+  frontend-dev:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: coworkspace-web-dev
+    restart: unless-stopped
+    environment:
+      VITE_API_URL: http://localhost:3000/api
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend-dev
+    networks:
+      - coworkspace-dev-network
+    command: npm run dev
+
+volumes:
+  mongodb_dev_data:
+    driver: local
+
+networks:
+  coworkspace-dev-network:
+    driver: bridge

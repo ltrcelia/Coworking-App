@@ -1,0 +1,22 @@
+FROM node:18-alpine
+
+# Installer les outils de développement
+RUN apk add --no-cache git
+
+WORKDIR /app
+
+# Copier les fichiers de configuration
+COPY package*.json ./
+COPY tsconfig.json ./
+
+# Installer toutes les dépendances (dev incluses)
+RUN npm install
+
+# Copier le code source
+COPY . .
+
+# Exposer le port
+EXPOSE 3000
+
+# Commande de développement avec hot reload
+CMD ["npm", "run", "dev"]
