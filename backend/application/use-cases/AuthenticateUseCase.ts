@@ -30,7 +30,7 @@ export class AuthenticateUseCase {
         return member;
     }
 
-    async addMember(payload: {
+    async createMemberAccount(payload: {
         gender: Gender;
         firstname: any,
         lastname: any,
@@ -74,11 +74,16 @@ export class AuthenticateUseCase {
         newMember.validOrThrow("creation");
         const members = await this.memberRepository.findAll();
 
-        if(newMember.hasConflictWith(members)) {
+        if (newMember.hasConflictWith(members)) {
             throw new Error('A member with the same email already exists');
         }
 
         await this.memberRepository.save(newMember);
         return newMember.id;
     }
+
+    // todo add login
+    // todo add logout
+    // todo add update account
+    // todo add delete account
 }

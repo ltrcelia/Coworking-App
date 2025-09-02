@@ -31,7 +31,7 @@ describe("Use case: member management", () => {
     })
 
     it('should not add a member with an existing email', async () => {
-        expect(useCase.addMember({
+        expect(useCase.createMemberAccount({
             ...validMember,
             firstname: 'Clara',
             lastname: 'Lemoine',
@@ -40,7 +40,7 @@ describe("Use case: member management", () => {
     })
 
     it('should not add a member with incomplete information', async () => {
-        expect(useCase.addMember({
+        expect(useCase.createMemberAccount({
             ...validMember,
             firstname: 'Clara',
             lastname: null,
@@ -49,8 +49,17 @@ describe("Use case: member management", () => {
     })
 
     it('should add a member', async () => {
-        expect(useCase.addMember({
+        expect(useCase.createMemberAccount({
             ...validMember,
         }))
     })
+
+    // TODO setup the related processes
+    // it('should update member information', async () => {
+    //     expect(useCase.updateMemberAccount())
+    // })
+    //
+    // it('should delete a member account', async () => {
+    //     expect(useCase.deleteMemberAccount())
+    // })
 });
