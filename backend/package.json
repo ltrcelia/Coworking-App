@@ -20,8 +20,7 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write \"**/*.{ts,json,md}\"",
-    "format:check": "prettier --check \"**/*.{ts,json,md}\"",
-    "prepare": "husky install"
+    "format:check": "prettier --check \"**/*.{ts,json,md}\""
   },
   "keywords": [
     "coworking",
@@ -47,7 +46,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.0",
     "morgan": "^1.10.0",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "tslib": "^2.6.1"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
@@ -116,11 +116,5 @@
     "*.{json,md}": [
       "prettier --write"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "npm run type-check && npm run test:ci"
-    }
   }
 }
