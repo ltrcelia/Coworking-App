@@ -1,1 +1,6 @@
 aide/
+
+frontend/node_modules
+
+.env
+.env.dev
