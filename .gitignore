@@ -2,6 +2,7 @@ aide/
 
 backend/node_modules
 frontend/node_modules
+/node_modules/*
 
 .env
 .env.dev

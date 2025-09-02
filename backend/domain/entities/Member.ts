@@ -124,4 +124,14 @@ export class Member {
   toJSON(): Omit<MemberData, 'password'> {
     return this.getPublicData();
   }
+
+  validOrThrow() {
+    if(this.hasEmptyFields()) {
+      throw new Error('Missing required fields');
+    }
+  }
+
+  hasEmptyFields() {
+    return !this.email.length && !this.password.length;
+  }
 }
