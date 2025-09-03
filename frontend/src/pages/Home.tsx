@@ -1,13 +1,14 @@
-import { useState } from "react";
+// import { useState } from "react";
+import React from "react";
 
-const Home = () => {
-  const [member, setMember] = useState([]);
+const Home: React.FC = () => {
+  // const [member, setMember] = useState([]);
 
   return (
     <>
       <div className="home">
         <div className="intro">
-          <h1>Bonjour {member.name}!</h1>
+          {/* <h1>Bonjour {member.name}!</h1> */}
           <p>Découvrez votre communauté Corworkspace et connecter-vous avec vos collègues</p>
         </div>
 
@@ -41,7 +42,7 @@ const Home = () => {
         <div className="discoverCommunity">
           <h2>Découvrir la communauté</h2>
           <p>Rencontrer un nouveau membre et élarissez votre réseau</p>
-          <div className="card">
+          {/* <div className="card">
             <img src={member.photo} alt={member.firstname} />
             <h2>{member.firstname} {member.lastname}</h2>
             <p>{member.profession}</p>
@@ -50,24 +51,23 @@ const Home = () => {
             {member.map((member) => {
               <div className="skill" key={member.id}>{member.skill}</div>
             })}
-            </div>
-            <p>"Description"</p>
-            <button><span></span> Découvrir un autre membre</button>
-          </div>
+            </div> */}
+          <p>"Description"</p>
+          <button><span></span> Découvrir un autre membre</button>
         </div>
 
         <div className="recentActivity">
           <h2>Activité récente</h2>
           <p>Les dernières nouvelles de votre communauté</p>
-          {member.map((member) => {
-          <div className="newMembers">
+          {/* {member.map((member) => {
+            <div className="newMembers">
             <div className="membersInfos" key={member.id}>
-              <p>Nouveau membre rejoint</p>
-              <p>{member.nom} ({member.profession}) a rejoint la communauté</p>
+            <p>Nouveau membre rejoint</p>
+            <p>{member.nom} ({member.profession}) a rejoint la communauté</p>
             </div>
             <p>Il y a (datedujour - connexion)</p>
-          </div>
-          })}
+            </div>
+            })} */}
         </div>
 
       </div>

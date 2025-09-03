@@ -1,4 +1,6 @@
-const Login = () => {
+import React from "react";
+
+const Login: React.FC = () => {
 
   return (
     <>
@@ -69,4 +71,4 @@ const Login = () => {
   );
 }
 
-export default Login
+export default Login;

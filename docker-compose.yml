@@ -64,7 +64,7 @@ services:
     container_name: coworkspace-web
     restart: unless-stopped
     ports:
-      - "3002:80"
+      - "5173:5173"
     depends_on:
       backend:
         condition: service_healthy

@@ -1,1 +1,59 @@
-/*# sourceMappingURL=index.css.map */
+nav .navbar {
+  margin: 10px 75px;
+  display: flex;
+  gap: 10px;
+}
+nav .navbar ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 50px;
+  padding-left: 0;
+}
+nav .navbar ul a {
+  color: #64748B;
+  font-family: "Arial";
+  padding: 10px 15px;
+}
+nav .navbar ul a:hover {
+  background-color: #EFF2FD;
+  border-radius: 10px;
+  color: #677FEA;
+}
+nav .navbar ul a:hover .round {
+  background-color: #677FEA;
+}
+nav .navbar ul a li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+nav .navbar ul a li .round {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #64748B;
+}
+nav .navbar a {
+  text-decoration: none;
+}
+nav .navbar a .logo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+nav .navbar a .logo h2 {
+  color: #64748B;
+  text-decoration: none;
+  font-family: "Arial";
+  color: #000;
+  display: flex;
+}
+nav .navbar a .logo .square {
+  border-radius: 7px;
+  display: block;
+  width: 35px;
+  height: 35px;
+  background-color: #6A72D9;
+}/*# sourceMappingURL=index.css.map */
