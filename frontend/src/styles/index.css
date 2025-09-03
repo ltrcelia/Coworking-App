@@ -21,6 +21,7 @@ nav .navbar ul {
 }
 nav .navbar ul a {
   color: #64748B;
+  text-decoration: none;
   padding: 10px 15px;
 }
 nav .navbar ul a:hover {
@@ -43,21 +44,18 @@ nav .navbar ul a li .round {
   border-radius: 50%;
   background-color: #64748B;
 }
-nav .navbar a {
-  text-decoration: none;
-}
-nav .navbar a .logo {
+nav .navbar .logo {
   display: flex;
   align-items: center;
   gap: 7px;
 }
-nav .navbar a .logo h2 {
+nav .navbar .logo h2 {
   color: #64748B;
   text-decoration: none;
   color: #000;
   display: flex;
 }
-nav .navbar a .logo .square {
+nav .navbar .logo .square {
   border-radius: 7px;
   display: block;
   width: 35px;

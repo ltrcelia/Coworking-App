@@ -5,12 +5,10 @@ const Navbar: React.FC = () => {
   return (
     <nav role="navigation">
       <div className="navbar">
-        <NavLink to="/">
-          <div className="logo">
-            <span className="square"></span>
-            <h2>CoworkSpace</h2>
-          </div>
-        </NavLink>
+        <div className="logo">
+          <span className="square"></span>
+          <h2>CoworkSpace</h2>
+        </div>
         <ul role="list">
           <NavLink to="/connexion">
             <li>

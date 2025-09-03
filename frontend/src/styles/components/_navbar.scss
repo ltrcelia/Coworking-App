@@ -11,6 +11,7 @@ nav {
             padding-left: 0;
             a {
                 color: #64748B;
+                text-decoration: none;
                 padding: 10px 15px;
                 &:hover {
                     background-color: #EFF2FD;
@@ -34,27 +35,23 @@ nav {
                 }
             }
         }
-        a {
-            text-decoration: none;
-            .logo {
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            h2 {
+                color: #64748B;
+                text-decoration: none;
+                color: #000;
                 display: flex;
-                align-items: center;
-                gap: 7px;
-                h2 {
-                    color: #64748B;
-                    text-decoration: none;
-                    color: #000;
-                    display: flex;
-                }
-                .square {
-                    border-radius: 7px;
-                    display: block;
-                    width: 35px;
-                    height: 35px;
-                    background-color: #6A72D9;
-                }
+            }
+            .square {
+                border-radius: 7px;
+                display: block;
+                width: 35px;
+                height: 35px;
+                background-color: #6A72D9;
             }
         }
-        
     }
 }
