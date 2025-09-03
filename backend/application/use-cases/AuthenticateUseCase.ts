@@ -81,9 +81,4 @@ export class AuthenticateUseCase {
         await this.memberRepository.save(newMember);
         return newMember.id;
     }
-
-    // todo add login
-    // todo add logout
-    // todo add update account
-    // todo add delete account
 }

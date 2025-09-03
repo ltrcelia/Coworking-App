@@ -40,7 +40,7 @@ dev:
 	@docker-compose -f docker-compose.dev.yml up --build
 	@echo "$(GREEN)✅ Services démarrés !$(NC)"
 	@echo "$(YELLOW)🌐 Frontend: http://localhost:5173$(NC)"
-	@echo "$(YELLOW)🔌 API: http://localhost:3000/api$(NC)"
+	@echo "$(YELLOW)🔌 API: http://localhost:3002/api$(NC)"
 	@echo "$(YELLOW)🗄️ Adminer: http://localhost:8080$(NC)"
 
 # Mode production

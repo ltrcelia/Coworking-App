@@ -1,3 +1,5 @@
+import {MemberRepository} from "@domain/interfaces/MemberRepository";
+import {AuthenticationService} from "@domain/services/AuthenticationService";
 import { Request, Response, NextFunction } from 'express';
 import { Member } from '../../domain/entities/Member';
 
@@ -12,24 +14,8 @@ declare global {
   }
 }
 
-/**
- * Interface pour le service d'authentification
- * TODO: À implémenter dans la couche infrastructure
- */
-interface AuthService {
-  verifyToken(token: string): { id: string; email: string; isManager: boolean };
-}
-
-/**
- * Interface pour le repository des membres
- * TODO: À implémenter dans la couche infrastructure
- */
-interface MemberRepository {
-  findById(id: string): Promise<Member | null>;
-}
-
 // Instances des services - En production, utilisez l'injection de dépendances
-let authService: AuthService;
+let authService: AuthenticationService;
 let memberRepository: MemberRepository;
 
 /**
@@ -46,17 +32,17 @@ export const isAuthenticated = async (req: Request, res: Response, next: NextFun
     // 6. Appeler next()
 
     const authHeader = req.headers.authorization;
-    
+
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      res.status(401).json({ 
+      res.status(401).json({
         success: false,
-        message: 'Token d\'authentification requis' 
+        message: 'Token d\'authentification requis'
       });
       return;
     }
 
     const token = authHeader.split(' ')[1];
-    
+
     if (!authService) {
       // Temporaire pour les tests - à supprimer
       console.warn('AuthService non configuré - authentification désactivée en mode développement');
@@ -66,14 +52,14 @@ export const isAuthenticated = async (req: Request, res: Response, next: NextFun
 
     // Vérification du token
     const decoded = authService.verifyToken(token);
-    
+
     // Récupération du membre
     const member = await memberRepository.findById(decoded.id);
-    
+
     if (!member) {
-      res.status(401).json({ 
+      res.status(401).json({
         success: false,
-        message: 'Membre non trouvé' 
+        message: 'Membre non trouvé'
       });
       return;
     }
@@ -81,10 +67,10 @@ export const isAuthenticated = async (req: Request, res: Response, next: NextFun
     // Ajout du membre à la requête
     req.member = member;
     next();
-    
+
   } catch (error) {
     console.error('Erreur d\'authentification:', error);
-    res.status(401).json({ 
+    res.status(401).json({
       success: false,
       message: 'Token invalide',
       error: process.env.NODE_ENV === 'development' ? (error as Error).message : undefined
@@ -98,17 +84,17 @@ export const isAuthenticated = async (req: Request, res: Response, next: NextFun
 export const isManager = (req: Request, res: Response, next: NextFunction): void => {
   try {
     if (!req.member) {
-      res.status(401).json({ 
+      res.status(401).json({
         success: false,
-        message: 'Authentification requise' 
+        message: 'Authentification requise'
       });
       return;
     }
 
     if (!req.member.isManagerRole()) {
-      res.status(403).json({ 
+      res.status(403).json({
         success: false,
-        message: 'Accès refusé - Droits gestionnaire requis' 
+        message: 'Accès refusé - Droits gestionnaire requis'
       });
       return;
     }
@@ -116,7 +102,7 @@ export const isManager = (req: Request, res: Response, next: NextFunction): void
     next();
   } catch (error) {
     console.error('Erreur lors de la vérification des permissions:', error);
-    res.status(500).json({ 
+    res.status(500).json({
       success: false,
       message: 'Erreur lors de la vérification des permissions',
       error: process.env.NODE_ENV === 'development' ? (error as Error).message : undefined
@@ -134,17 +120,17 @@ export const canModifyMember = (req: Request, res: Response, next: NextFunction)
     const currentMember = req.member;
 
     if (!currentMember) {
-      res.status(401).json({ 
+      res.status(401).json({
         success: false,
-        message: 'Authentification requise' 
+        message: 'Authentification requise'
       });
       return;
     }
 
     if (!currentMember.canModifyMember(targetMemberId)) {
-      res.status(403).json({ 
+      res.status(403).json({
         success: false,
-        message: 'Vous ne pouvez modifier que votre propre profil' 
+        message: 'Vous ne pouvez modifier que votre propre profil'
       });
       return;
     }
@@ -152,7 +138,7 @@ export const canModifyMember = (req: Request, res: Response, next: NextFunction)
     next();
   } catch (error) {
     console.error('Erreur lors de la vérification des permissions:', error);
-    res.status(500).json({ 
+    res.status(500).json({
       success: false,
       message: 'Erreur lors de la vérification des permissions',
       error: process.env.NODE_ENV === 'development' ? (error as Error).message : undefined
@@ -200,7 +186,7 @@ export const validateGender = (req: Request, res: Response, next: NextFunction):
  * Configure les services d'authentification
  */
 export const setupAuthMiddleware = (
-  authServiceInstance: AuthService,
+  authServiceInstance: AuthenticationService,
   memberRepositoryInstance: MemberRepository
 ): void => {
   authService = authServiceInstance;
