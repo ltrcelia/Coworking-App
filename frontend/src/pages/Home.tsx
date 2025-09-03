@@ -5,7 +5,6 @@ const Home: React.FC = () => {
   // const [member, setMember] = useState([]);
 
   return (
-    <>
       <div className="home">
         <div className="intro">
           {/* <h1>Bonjour {member.name}!</h1> */}
@@ -71,7 +70,6 @@ const Home: React.FC = () => {
         </div>
 
       </div>
-    </>
   );
 }
 
