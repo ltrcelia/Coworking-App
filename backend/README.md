@@ -193,7 +193,7 @@ Structure des tests recommandée :
     /application     # Tests des cas d'utilisation
   /integration       # Tests d'intégration
   /e2e              # Tests end-to-end
-  setup.ts          # Configuration des tests
+  jest.setup.ts          # Configuration des tests
 ```
 
 Configuration Jest pour TypeScript :
