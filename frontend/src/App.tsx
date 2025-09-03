@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import './styles/index.css'
+import './styles/index.css';
 import Navbar from './components/Navbar.tsx';
-import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
 import Community from "./pages/Community";
 import Events from "./pages/Events";
 import Parameters from "./pages/Parameters";
@@ -17,7 +17,7 @@ const App: React.FC = () => {
 
       <main role="main">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Dashboard />} />
           <Route path="/communaute" element={<Community />} />
           <Route path="/evenements" element={<Events />} />
           <Route path="/parametres" element={<Parameters />} />

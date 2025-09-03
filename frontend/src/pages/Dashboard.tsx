@@ -1,11 +1,11 @@
 // import { useState } from "react";
 import React from "react";
 
-const Home: React.FC = () => {
+const Dashboard: React.FC = () => {
   // const [member, setMember] = useState([]);
 
   return (
-    <div className="home">
+    <div className="Dashboard">
       <div className="intro">
         {/* <h1>Bonjour {member.name}!</h1> */}
         <p>Découvrez votre communauté Corworkspace et connecter-vous avec vos collègues</p>
@@ -73,4 +73,4 @@ const Home: React.FC = () => {
   );
 }
 
-export default Home;
+export default Dashboard;
