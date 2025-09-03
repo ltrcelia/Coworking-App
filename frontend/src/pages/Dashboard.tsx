@@ -5,9 +5,9 @@ const Dashboard: React.FC = () => {
   // const [member, setMember] = useState([]);
 
   return (
-    <div className="Dashboard">
+    <div className="dashboard">
       <div className="intro">
-        {/* <h1>Bonjour {member.name}!</h1> */}
+        <h1>Bonjour member.name !</h1>
         <p>Découvrez votre communauté Corworkspace et connecter-vous avec vos collègues</p>
       </div>
 

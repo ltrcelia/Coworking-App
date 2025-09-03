@@ -1,0 +1,30 @@
+.dashboard {
+    padding: 50px 100px;
+    background-color: #F8FAFC;
+    .intro {
+        p {
+            color: rgba(0, 0, 0, 0.5);
+        }
+    }
+    .stats {
+        display: flex;
+        justify-content: space-between;
+        .card {
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 300px;
+            padding: 20px;
+            h2 {
+                margin-bottom: 5px;
+            }
+            .square {
+                display: block;
+                width: 40px;
+                height: 40px;
+                background-color: black;
+                border-radius: 10px;
+            }
+        }
+    }
+}
