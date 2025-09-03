@@ -3,7 +3,6 @@ import React from "react";
 const Login: React.FC = () => {
 
   return (
-    <>
       <div className="page">
         <div className='LoginPage'>
           <div className="loginHead">
@@ -70,8 +69,6 @@ const Login: React.FC = () => {
 
         </div>
       </div>
-
-    </>
   );
 }
 
