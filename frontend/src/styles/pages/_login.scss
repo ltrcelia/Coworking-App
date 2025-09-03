@@ -1,0 +1,145 @@
+.page {
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(70deg, #6973DA, #7355B1);
+    .LoginPage {
+        margin: 30px;
+        background-color: #F8F7FC;
+        width: 330px;
+        padding: 50px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 20px;
+        .loginHead {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+            .square {
+                border-radius: 7px;
+                display: block;
+                width: 55px;
+                height: 55px;
+                background-color: #6A72D9;
+            }
+            h1 {
+                margin-bottom: 5px;
+            }
+            p {
+                margin: 5px;
+                color: rgba(0, 0, 0, 0.4);
+            }
+        }
+        form {
+            .inputBloc {
+                .inputInfos {
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+                    gap: 4px;
+                    label {
+                        font-size: 15px;
+                    }
+                    input {
+                        height: 40px;
+                        border: 1px solid rgb(230, 230, 230);
+                        border-radius: 10px;
+                        margin-bottom: 25px;
+                        padding: 0 45px;
+                    }
+                    .round {
+                        position: absolute;
+                        top: 35px;
+                        left: 15px;
+                        display: block;
+                        width: 15px;
+                        height: 15px;
+                        background-color: #6A72D9;
+                    }
+                }
+            }
+            button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                width: 100%;
+                font-size: 15px;
+                font-weight: 600;
+                background: linear-gradient(70deg, #6973DA, #7355B1);
+                border: none;
+                border-radius: 10px;
+                color: #fff;
+                height: 45px;
+                transition: all 0.4s;
+                cursor: pointer;
+                &:hover {
+                    box-shadow: inset 5px 5px 7px #604694;
+                        font-size: 14px;
+                }
+                .round {
+                    display: block;
+                    width: 10px;
+                    height: 20px;
+                    background-color: #fff;
+                }
+            }
+            .forgot {
+                position: relative;
+                color: #6973DA;
+                text-align: center;
+                cursor: pointer;
+                margin: 30px;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+        .discoverCS {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            p {
+                font-size: 14px;
+                color: rgba(0, 0, 0, 0.4);
+                cursor: pointer;
+                &:hover {
+                    text-decoration: underline;
+                }
+            } 
+            .line {
+                height: 1px;
+                width: 70px;
+                background-color: rgba(0, 0, 0, 0.2);
+            }
+        }
+        .moreBloc {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            .card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background-color: #fff;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+                padding: 15px 10px;
+                .round {
+                    display: block;
+                    width: 20px;
+                    height: 20px;
+                    background-color: #6973DA;
+                }
+                p {
+                    font-size: 13px;
+                    text-align: center;
+                    margin: 5px;
+                }
+            }
+        }
+    }
+}

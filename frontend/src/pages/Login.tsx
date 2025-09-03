@@ -4,69 +4,73 @@ const Login: React.FC = () => {
 
   return (
     <>
-      <div className='LoginPage'>
-        <div className="loginHead">
-          <h1>CoworkSpace</h1>
-          <p>Connectez-vous à votre communauté</p>
-        </div>
+      <div className="page">
+        <div className='LoginPage'>
+          <div className="loginHead">
+            <span className="square"></span>
+            <h1>CoworkSpace</h1>
+            <p>Connectez-vous à votre communauté</p>
+          </div>
 
-        <div className="loginForm">
+          <div className="loginForm">
             <form>
-                <div className="InputBloc">
+              <div className="inputBloc">
                 <div className="inputInfos">
-                    <label htmlFor="email">Adresse email</label>
-                    <span className='round'></span>
-                    <input type="email" id='email' required />
+                  <label htmlFor="email">Adresse email</label>
+                  <span className='round'></span>
+                  <input type="email" id='email' required />
                 </div>
-                    
+
                 <div className="inputInfos">
-                    <label htmlFor="password">Mot de passe</label>
-                    <span className='round'></span>
-                    <input type="password" id='password' required />
+                  <label htmlFor="password">Mot de passe</label>
+                  <span className='round'></span>
+                  <input type="password" id='password' required />
                 </div>
-                </div>
+              </div>
 
-                <p className='forgot'>Mot de passe oublié ?</p>
+              <button type="submit" className="connect">
+                <span className='round'></span>
+                Se connecter
+              </button>
 
-                <button type="submit"><span className='round'></span> Se connecter</button>
-
-                <p>Mot de passe oublié ?</p>
+              <p className='forgot'>Mot de passe oublié ?</p>
 
             </form>
 
             <div className="discoverCS">
-                <span></span>
-                Découvrez CoworkSpace
-                <span></span>
-            </div>
-            
-            <div className="moreBloc">
-                <div className="card">
-                    <span className='round'></span>
-                    <h3>Networking</h3>
-                    <p>Connectez-vous avec des professionnels</p>
-                </div>
-                <div className="card">
-                    <span className='round'></span>
-                    <h3>Innovation</h3>
-                    <p>Collaborez sur des projets</p>
-                </div>
-                <div className="card">
-                    <span className='round'></span>
-                    <h3>Convivialité</h3>
-                    <p>Espaces de travail modernes</p>
-                </div>
-                <div className="card">
-                    <span className='round'></span>
-                    <h3>Flexibilité</h3>
-                    <p>Abonnements adaptés</p>
-                </div>
+              <span className="line"></span>
+              <p>Découvrez CoworkSpace</p>
+              <span className="line"></span>
             </div>
 
+            <div className="moreBloc">
+              <div className="card">
+                <span className='round'></span>
+                <p><strong>Networking</strong></p>
+                <p>Connectez-vous avec des professionnels</p>
+              </div>
+              <div className="card">
+                <span className='round'></span>
+                <p><strong>Innovation</strong></p>
+                <p>Collaborez sur des projets</p>
+              </div>
+              <div className="card">
+                <span className='round'></span>
+                <p><strong>Convivialité</strong></p>
+                <p>Espaces de travail modernes</p>
+              </div>
+              <div className="card">
+                <span className='round'></span>
+                <p><strong>Flexibilité</strong></p>
+                <p>Abonnements adaptés</p>
+              </div>
+            </div>
+
+          </div>
+
         </div>
-        
       </div>
-      
+
     </>
   );
 }

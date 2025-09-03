@@ -7,7 +7,6 @@ import Events from "./pages/Events";
 import Parameters from "./pages/Parameters";
 import Profil from "./pages/Profil";
 import Login from "./pages/Login";
-import Footer from './components/Footer';
 
 const App: React.FC = () => {
   return (
@@ -26,10 +25,6 @@ const App: React.FC = () => {
           <Route path="/connexion" element={<Login />} />
         </Routes>
       </main>
-
-      <footer role="contentinfo">
-        <Footer />
-      </footer>
     </>
   );
 }
