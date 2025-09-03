@@ -141,7 +141,7 @@ export class Member {
         return this.getPublicData();
     }
 
-    validOrThrow(type: string) {
+    validOrThrow(type: string|null = null): void {
         if (type == "authentication") {
             if (this.hasEmptyAuthFields()) {
                 throw new Error('Missing required fields');
