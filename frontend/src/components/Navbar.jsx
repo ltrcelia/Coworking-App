@@ -14,21 +14,28 @@ const Navbar = () => {
                             <span className="round"></span>
                             <li>Dashbord</li>
                         </NavLink>
-                        <NavLink to="/collection">
+                        <NavLink to="/communaute">
                             <span className="round"></span>
                             <li>Communauté</li>
                         </NavLink>
-                        <NavLink to="/collection">
+                        <NavLink to="/evenements">
                             <span className="round"></span>
                             <li>Événement</li>
                         </NavLink>
-                        <NavLink to="/collection">
+                        <NavLink to="/parametres">
                             <span className="round"></span>
-                            <li>Mon Profil</li>
+                            <li>Paramètres</li>
                         </NavLink>
-                        <NavLink to="/collection">
+                        <NavLink to="/mon-profil">
                             <span className="round"></span>
-                            <li>MOn Profil</li>
+                            <li> 
+                                <div className="profilMember">
+                                    <div className="name">
+                                        {member.firstname} {member.lastname}
+                                    </div>
+                                    <p>{member.profession}</p>
+                                </div> 
+                            </li>
                         </NavLink>
                     </ul>
                 </div>
