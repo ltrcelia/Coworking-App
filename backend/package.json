@@ -35,6 +35,7 @@
   "author": "Étudiants CDA",
   "license": "MIT",
   "dependencies": {
+    "@prisma/client": "^6.15.0",
     "awilix": "^12.0.5",
     "bcrypt": "^5.1.1",
     "class-transformer": "^0.5.1",

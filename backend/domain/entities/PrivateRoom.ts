@@ -18,10 +18,6 @@ export class PrivateRoom extends Room {
         this.status = "occupied";
     }
 
-    displayAvailablePrivateRooms(): PrivateRoom[] {
-        return this.rooms.filter(room => room.status === "available");
-    }
-
     getAssignedMember(): Member | undefined {
         return this.assignedMember;
     }
