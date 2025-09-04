@@ -10,14 +10,4 @@ export class MeetingRoom extends Room {
         this.status = "occupied";
         return `Salle de réunion "${this.name}" réservée avec succès par ${memberId} pour le ${date}.`;
     }
-
-    displayAllMeetingRooms(): MeetingRoom[] {
-        return this.rooms;
-    }
-
-    searchMeetingRoomsBy(criteria: Partial<RoomData>): MeetingRoom[] {
-        return this.rooms.filter(room => {
-            Object.entries(criteria).every(([key, value]) => (room as any)[key] === value)
-        });
-    }
 }

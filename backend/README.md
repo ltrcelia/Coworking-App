@@ -1,8 +1,31 @@
-# CoworkSpace Backend API (TypeScript)
+# CoworkSpace Backend 
+
+## Base de données (MongoDB) et ORM (Prisma)
+
+- Installer Prisma
+```shell
+- npm -i @prisma/client
+```
+- Initialiser Prisma
+```shell
+npx prisma init
+```
+
+- Générer les fichiers de migration
+```shell
+npx prisma migrate
+```
+
+- Pour mettre à jour la base de données
+```shell
+npx prisma db push
+```
+
+## API (TypeScript)
 
 API REST TypeScript pour la plateforme de coworking CoworkSpace, développée avec une architecture en couches et un typage strict.
 
-## 🏗️ Architecture
+### 🏗️ Architecture
 
 Ce projet suit une **architecture en couches** (layered architecture) avec **TypeScript** :
 
@@ -32,7 +55,7 @@ Ce projet suit une **architecture en couches** (layered architecture) avec **Typ
   tsconfig.json       # Configuration TypeScript
 ```
 
-## 🚀 Installation
+### 🚀 Installation
 
 1. **Cloner le projet**
 ```bash
@@ -90,22 +113,22 @@ npm run dev:watch
 npm start
 ```
 
-## 📋 Fonctionnalités à implémenter
+### 📋 Fonctionnalités à implémenter
 
-### TypeScript & Typage
+#### TypeScript & Typage
 - [x] Configuration TypeScript stricte
 - [x] Interfaces et types pour toutes les entités
 - [x] DTOs typés pour les requêtes/réponses
 - [ ] Validation avec class-validator
 - [ ] Transformations avec class-transformer
 
-### Authentification
+#### Authentification
 - [x] Structure des middlewares d'authentification typés
 - [ ] Implémentation JWT avec types
 - [ ] Hashage des mots de passe avec bcrypt
 - [ ] Protection des routes avec types
 
-### Gestion des membres
+#### Gestion des membres
 - [x] Entité Member avec types stricts
 - [x] Interface MemberRepository typée
 - [x] Contrôleur avec DTOs typés
@@ -114,13 +137,13 @@ npm start
 - [ ] Membre aléatoire pour networking
 - [ ] Validation des données avec types
 
-### Base de données
+#### Base de données
 - [ ] Configuration MongoDB ou SQL avec types
 - [ ] Modèles de données TypeScript
 - [ ] Repository patterns typés
 - [ ] Migrations/seeders
 
-## 🛠️ Commandes disponibles
+### 🛠️ Commandes disponibles
 
 ```bash
 # Développement TypeScript
@@ -147,15 +170,15 @@ npm run test:coverage    # Coverage des tests
 npm run test:ci          # Tests pour CI/CD
 ```
 
-## 📚 API Endpoints
+### 📚 API Endpoints
 
-### Authentification
+#### Authentification
 ```typescript
 POST /api/auth/login     // Connexion
 GET  /api/auth/me        // Profil utilisateur
 ```
 
-### Membres
+#### Membres
 ```typescript
 GET    /api/members           // Liste des membres
 GET    /api/members/random    // Membre aléatoire
@@ -167,7 +190,7 @@ PUT    /api/members/:id       // Modifier un membre
 DELETE /api/members/:id       // Supprimer un membre (admin)
 ```
 
-### Utilitaires
+#### Utilitaires
 ```typescript
 GET /api                 // Information API
 GET /api/health          // Health check
@@ -175,7 +198,7 @@ GET /api/metrics         // Métriques serveur
 GET /api/docs            // Documentation (dev only)
 ```
 
-## 🔒 Sécurité TypeScript
+### 🔒 Sécurité TypeScript
 
 - **Typage strict** : Configuration TypeScript stricte activée
 - **Validation** : Types pour toutes les entrées/sorties
@@ -183,7 +206,7 @@ GET /api/docs            // Documentation (dev only)
 - **DTOs** : Objets de transfert de données typés
 - **Middlewares** : Authentification et autorisation typées
 
-## 🧪 Tests TypeScript
+### 🧪 Tests TypeScript
 
 Structure des tests recommandée :
 ```
@@ -202,7 +225,7 @@ Configuration Jest pour TypeScript :
 - Coverage des fichiers TypeScript
 - Types Jest inclus
 
-## 📝 Bonnes pratiques TypeScript
+### 📝 Bonnes pratiques TypeScript
 
 1. **Typage strict** : Utilisez `strict: true` dans tsconfig.json
 2. **Interfaces explicites** : Définissez des interfaces pour tous les contrats
@@ -212,7 +235,7 @@ Configuration Jest pour TypeScript :
 6. **Gestion d'erreurs** : Créez des types d'erreurs spécifiques
 7. **Configuration ESLint** : Règles TypeScript strictes activées
 
-## 🎯 Objectifs pédagogiques TypeScript
+### 🎯 Objectifs pédagogiques TypeScript
 
 - Comprendre l'architecture en couches avec TypeScript
 - Maîtriser le typage strict et les interfaces
@@ -222,7 +245,7 @@ Configuration Jest pour TypeScript :
 - Écrire du code type-safe et maintenable
 - Utiliser les outils de développement TypeScript
 
-## 📖 Ressources TypeScript
+### 📖 Ressources TypeScript
 
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 - [Express avec TypeScript](https://expressjs.com/en/guide/writing-middleware.html)
@@ -230,7 +253,7 @@ Configuration Jest pour TypeScript :
 - [Jest avec TypeScript](https://jestjs.io/docs/getting-started#using-typescript)
 - [ESLint TypeScript](https://typescript-eslint.io/)
 
-## ⚡ Avantages TypeScript
+### ⚡ Avantages TypeScript
 
 - **Type Safety** : Détection d'erreurs à la compilation
 - **IntelliSense** : Autocomplétion et navigation améliorées
