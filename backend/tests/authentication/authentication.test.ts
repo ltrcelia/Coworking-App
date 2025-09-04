@@ -1,6 +1,6 @@
 import {AuthenticateUseCase} from "../../application/use-cases/AuthenticateUseCase";
 import {Member} from "../../domain/entities/Member";
-import {InMemoryMemberRepository} from "../../infrastructure/repositories/InMemoryMemberRepository";
+import {InMemoryMemberRepository} from "../../infrastructure/repositories/memory.member.repository";
 
 describe("Use case: member management", () => {
     let memberRepository = new InMemoryMemberRepository();

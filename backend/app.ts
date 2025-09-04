@@ -1,7 +1,7 @@
 import { MemberRepository } from "@domain/interfaces/MemberRepository";
 import { AuthenticationService } from "@domain/services/AuthenticationService";
 import { BasicAuthenticator } from "@infrastructure/auth/basic-authenticator";
-import { InMemoryMemberRepository } from "@infrastructure/repositories/InMemoryMemberRepository";
+import { InMemoryMemberRepository } from "@infrastructure/repositories/memory.member.repository";
 import { JwtTokenManager } from "@infrastructure/security/JwtTokenManager";
 import { setupAuthMiddleware } from "@presentation/middlewares/authMiddleware";
 import adminRoutes from "@presentation/routes/adminRoutes";

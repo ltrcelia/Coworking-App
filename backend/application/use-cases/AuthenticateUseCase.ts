@@ -1,5 +1,5 @@
 import {Gender, Member, MembershipType} from "../../domain/entities/Member";
-import {InMemoryMemberRepository} from "../../infrastructure/repositories/InMemoryMemberRepository";
+import {InMemoryMemberRepository} from "@infrastructure/repositories/memory.member.repository";
 import {BasicAuthenticator} from "../../infrastructure/auth/basic-authenticator";
 
 type PayloadUseCase = {

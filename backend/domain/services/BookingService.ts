@@ -1,14 +1,25 @@
-import { Booking, BookingData, BookingType } from '../entities/Booking';
-import { Notification } from '../entities/Notification';
+import {InMemoryBookingRepository} from "../../infrastructure/repositories/memory.booking.repository";
+import {InMemoryMemberRepository} from "../../infrastructure/repositories/memory.member.repository";
+import {Booking, BookingData, BookingStatus, BookingType} from '../entities/Booking';
+import {Notification} from '../entities/Notification';
 
 export class BookingService {
     private bookings: Booking[] = [];
+    private bookingRepository: InMemoryBookingRepository = new InMemoryBookingRepository;
+    private memberRepository: InMemoryMemberRepository = new InMemoryMemberRepository;
     private notifications: Notification[] = [];
 
     /**
      * Crée une nouvelle réservation pour une salle ou événement
      */
-    newBooking(data: { startDate: string, endDate: string, roomId: string, memberId: string, type: BookingType }): Booking {
+    newBooking(data: {
+        startDate: string,
+        endDate: string,
+        roomId: string,
+        memberId: string,
+        type: BookingType,
+        status: BookingStatus
+    }): Booking {
         const booking = new Booking({
             id: crypto.randomUUID(),
             ...data,
@@ -63,6 +74,37 @@ export class BookingService {
         this.notifications = this.notifications.filter(
             n => !(n.memberId === booking.memberId && n.type === booking.type)
         );
+    }
+
+    async handleRoomBookingRequest(booking: Booking, memberId: string): Promise<boolean> {
+        const member = await this.memberRepository.findById(memberId);
+
+        if (!member) throw new Error(`Member with ID ${memberId} not found`);
+
+        const type = booking.type;
+        const roomId = booking.roomId;
+        const startDate = booking.startDate;
+        const endDate = booking.endDate;
+
+        if (member.isManager) {
+            this.notifications.push(
+                new Notification({
+                    id: crypto.randomUUID(),
+                    memberId,
+                    type,
+                    message: `Votre réservation pour la salle ${roomId} est confirmée du ${startDate} au ${endDate}`,
+                    createdAt: new Date().toISOString()
+                })
+            );
+            return true;
+        } else {
+            throw new Error("You are not authorized to accept this request");
+        }
+    }
+
+    async handleEventBookingRequest(eventId: string, memberId: string, seats: number): Promise<boolean> {
+        // todo automatic booking if enough seats available
+        return true;
     }
 
     /**
