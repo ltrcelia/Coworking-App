@@ -6,10 +6,6 @@ services:
     image: mongo:7
     container_name: coworkspace-db
     restart: unless-stopped
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME:-admin}
-      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD:-password}
-      MONGO_INITDB_DATABASE: ${DB_NAME:-coworkspace}
     volumes:
       - mongodb_data:/data/db
       - ./database/init:/docker-entrypoint-initdb.d
