@@ -10,42 +10,40 @@ describe("Use case: member management", () => {
         gender: 'female',
         firstname: 'Jane',
         lastname: 'Doe',
-        bio: "",
-        birthdate: "",
-        city: "",
-        company: "",
-        country: "",
+        bio: "N/A",
+        birthdate: "1994-10-10",
+        company: "Transition",
+        city: "London",
+        country: "United Kingdom",
         email: "jane.doe@gmail.com",
         isManager: false,
         joinDate: "",
         membershipType: "Basic",
         password: "jane.doe",
-        phone: "",
-        photo: "06-44-66-74-77",
-        profession: "",
+        phone: "06-44-66-74-77",
+        photo: "https://randomuser.me/api/portraits/women/4.jpg",
+        profession: "Developer",
         skills: [],
     })
 
     it('should not authenticate a unknown member', async () => {
-        expect(useCase.authenticateMember(validMember))
+        expect(useCase.authenticateMember(validMember)).rejects.toThrow()
     })
 
     it('should not add a member with an existing email', async () => {
-        expect(useCase.createMemberAccount({
+        await expect(useCase.createMemberAccount({
             ...validMember,
-            firstname: 'Clara',
-            lastname: 'Lemoine',
             email: "clara.lemoine@example.com",
-        }))
+        })).rejects.toThrow('A member with the same email already exists')
     })
 
     it('should not add a member with incomplete information', async () => {
-        expect(useCase.createMemberAccount({
+        await expect(useCase.createMemberAccount({
             ...validMember,
             firstname: 'Clara',
             lastname: null,
             email: "clara.lemoine@example.com",
-        }))
+        })).rejects.toThrow("Field \"lastname\" is required")
     })
 
     it('should add a member', async () => {

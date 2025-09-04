@@ -1,0 +1,125 @@
+.dashboard {
+    padding: 50px 100px;
+    margin: 0 170px;
+    background-color: #F8FAFC;
+    .intro {
+        p {
+            color: rgba(0, 0, 0, 0.5);
+        }
+    }
+    .stats {
+        display: flex;
+        justify-content: space-between;
+        .card {
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 300px;
+            padding: 20px;
+            h2 {
+                margin-bottom: 5px;
+                font-size: 35px;
+            }
+            .square {
+                display: block;
+                width: 40px;
+                height: 40px;
+                background-color: black;
+                border-radius: 10px;
+                &.blue {
+                    background: linear-gradient(70deg, #387CF3, #2155DC);
+                }
+                &.green {
+                    background: linear-gradient(70deg, #37B57F, #2D9A6C);
+                }
+                &.violet {
+                    background: linear-gradient(70deg, #8957F4, #7E3EEE);
+                }
+                &.orange {
+                    background: linear-gradient(70deg, #F29A0B, #DC7C05);
+                }
+            }
+            p:not(.green) {
+                margin-bottom: 10px;
+                color: rgba(0, 0, 0, 0.5);
+            }
+            .green {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                p {
+                    color: #70C084;
+                    margin: 5px;
+                }
+                span {
+                    display: block;
+                    background-color: #70C084;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+    .grid {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        .discoverCommunity,
+        .recentActivity {
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            h2 {
+                margin: 10px 0;
+            }
+            p {
+                color: rgba(0, 0, 0, 0.5);
+            }
+        }
+        .discoverCommunity {
+            .card {
+                background: linear-gradient(150deg, #6973DA, #7355B1);
+                padding: 30px;
+                border-radius: 20px;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+                h2 {
+                    color: #fff;
+
+                }
+                p,
+                .skill {
+                    color: rgba(255, 255, 255, 0.8);
+                }
+                .skill {
+                    background-color: rgba(255, 255, 255, 0.15);
+                    padding: 5px 10px;
+                    border-radius: 20px;
+                    font-size: 12px;
+                }
+                button {
+                    background-color: rgba(255, 255, 255, 0.15);
+                    color: #fff;
+                    border: 1px solid rgba(255, 255, 255, 0.3);
+                    border-radius: 20px;
+                    padding: 10px 15px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    span {
+                        display: block;
+                        width: 20px;
+                        height: 20px;
+                        background-color: #fff;
+                        border-radius: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

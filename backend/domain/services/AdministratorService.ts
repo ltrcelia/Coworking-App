@@ -23,3 +23,4 @@ export class AdministratorService {
         return true;
     }
 }
+//
