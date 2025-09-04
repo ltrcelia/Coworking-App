@@ -32,23 +32,23 @@ export class AuthenticateUseCase {
 
     async createMemberAccount(payload: {
         gender: Gender;
-        firstname: any,
-        lastname: any,
-        password: any,
-        email: any,
-        bio: any,
-        birthdate: any,
-        city: any,
-        company: any,
-        country: any,
+        firstname: string,
+        lastname: string,
+        password: string,
+        email: string,
+        bio: string,
+        birthdate: string,
+        city: string,
+        company: string,
+        country: string,
         isManager: boolean,
-        joinDate: any,
+        joinDate: string,
         membershipType: MembershipType,
-        phone: any,
-        photo: any,
-        profession: any,
-        skills: any,
-        id: any
+        phone: string,
+        photo: string,
+        profession: string,
+        skills: string[],
+        id: string
     }) {
         const newMember = new Member({
             gender: payload.gender,

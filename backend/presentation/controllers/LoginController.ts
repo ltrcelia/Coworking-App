@@ -1,4 +1,3 @@
-// src/interfaces/http/controllers/AuthController.ts
 import { Request, Response } from "express";
 import { AuthenticationService } from "@domain/services/AuthenticationService";
 
