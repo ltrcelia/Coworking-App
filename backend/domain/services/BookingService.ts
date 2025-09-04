@@ -12,7 +12,7 @@ export class BookingService {
     /**
      * Crée une nouvelle réservation pour une salle ou événement
      */
-    newBooking(data: { startDate: string, endDate: string, roomId: string, memberId: string, type: BookingType }): Booking {
+    newBooking(data: { startDate: string, endDate: string, roomId: string, memberId: string, type: BookingType, status: BookingStatus }): Booking {
         const booking = new Booking({
             id: crypto.randomUUID(),
             ...data,
