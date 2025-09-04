@@ -1,6 +1,9 @@
 nav {
+    background-color: #fff;
+    border: 1px solid #00000017;
     .navbar {
-        padding: 10px 75px;
+        margin: 0 240px;
+        padding: 10px 0;
         display: flex;
         gap: 10px;
         ul {
@@ -19,6 +22,9 @@ nav {
                     color: #677FEA;
                     .round {
                         background-color: #677FEA;
+                    }
+                    li {
+                        color: #677FEA;
                     }
                 }
                 li {
@@ -51,6 +57,12 @@ nav {
                 width: 35px;
                 height: 35px;
                 background-color: #6A72D9;
+                position: relative;
+                .img {
+                    position: absolute;
+                    left: 5px;
+                    top: 4px;
+                }
             }
         }
     }

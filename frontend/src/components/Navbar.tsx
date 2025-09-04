@@ -1,49 +1,54 @@
 import { NavLink } from "react-router-dom";
 import React from "react";
+import { FaHouse } from "react-icons/fa6";
+import { FaUsers } from "react-icons/fa";
+import { FaCalendar } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+import { FaGear } from "react-icons/fa6";
 
 const Navbar: React.FC = () => {
   return (
     <nav role="navigation">
       <div className="navbar">
         <div className="logo">
-          <span className="square"></span>
+          <div className="square">
+            <div className="img">
+              <FaUsers fill="white" size={25} />
+            </div>
+          </div>
+
           <h2>CoworkSpace</h2>
         </div>
         <ul role="list">
-          <NavLink to="/connexion">
-            <li>
-              <span className="round"></span>
-              Connexion
-            </li>
-          </NavLink>
           <NavLink to="/">
             <li>
-              <span className="round"></span>
-              Dashboard
+              <FaHouse fill="grey" /> Dashboard
             </li>
           </NavLink>
           <NavLink to="/communaute">
             <li>
-              <span className="round"></span>
-              Communauté
+              <FaUsers fill="grey" size={22} /> Communauté
             </li>
           </NavLink>
           <NavLink to="/evenements">
             <li>
-              <span className="round"></span>
-              Événements
+              <FaCalendar fill="grey" /> Événements
             </li>
           </NavLink>
           <NavLink to="/parametres">
             <li>
-              <span className="round"></span>
-              Paramètres
+              <FaGear fill="grey" /> Paramètres
             </li>
           </NavLink>
-          <NavLink to="/mon-profil">
+          {/* <NavLink to="/mon-profil">
             <span className="round"></span>
             <li>
               Mon profil
+            </li>
+          </NavLink> */}
+          <NavLink to="/connexion">
+            <li>
+              <FaUser fill="grey" /> Mon profil
             </li>
           </NavLink>
         </ul>
