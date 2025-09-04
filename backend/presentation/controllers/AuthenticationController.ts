@@ -1,10 +1,12 @@
-// src/interfaces/http/controllers/AuthController.ts
 import { Request, Response } from "express";
 import { AuthenticationService } from "@domain/services/AuthenticationService";
 
-export class LoginController {
+export class AuthenticationController {
     constructor(private readonly authService: AuthenticationService) {}
 
+    /**
+     * Se connecter
+     */
     async login(req: Request, res: Response): Promise<void> {
         try {
             const { email, password } = req.body;
@@ -33,6 +35,9 @@ export class LoginController {
         }
     }
 
+    /**
+     * Se déconnecter
+     */
     async logout(_req: Request, res: Response): Promise<void> {
         this.authService.logout();
 
