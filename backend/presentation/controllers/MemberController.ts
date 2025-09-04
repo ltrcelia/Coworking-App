@@ -1,67 +1,9 @@
-import { Request, Response } from 'express';
-import { Member } from '../../domain/entities/Member';
-import { MemberFilters } from '../../domain/interfaces/MemberRepository';
+import bcrypt from "bcrypt";
+import {Request, Response} from 'express';
+import {MemberService} from "../../domain/services/MemberService";
+import {MemberFilters} from '../../domain/interfaces/MemberRepository';
+import {CreateMemberDTO, UpdateMemberDTO} from "../../application/dto/Member.dto";
 
-/**
- * Interface pour le service des membres
- * TODO: À implémenter dans la couche application
- */
-interface MemberService {
-  getAllMembers(): Promise<Member[]>;
-  getMemberById(id: string): Promise<Member | null>;
-  getRandomMember(excludeId?: string): Promise<Member | null>;
-  createMember(data: any): Promise<Member>;
-  updateMember(id: string, data: any): Promise<Member | null>;
-  deleteMember(id: string): Promise<boolean>;
-  filterMembers(filters: MemberFilters): Promise<Member[]>;
-  getCommunityStats(): Promise<any>;
-}
-
-/**
- * DTO pour la création d'un membre
- */
-export interface CreateMemberDTO {
-  gender: 'male' | 'female';
-  firstname: string;
-  lastname: string;
-  email: string;
-  password: string;
-  phone: string;
-  birthdate: string;
-  city: string;
-  country: string;
-  photo?: string;
-  profession: string;
-  company: string;
-  skills: string[];
-  membershipType: 'Basic' | 'Premium' | 'Enterprise';
-  bio: string;
-  linkedinUrl?: string;
-  isManager?: boolean;
-}
-
-/**
- * DTO pour la mise à jour d'un membre
- */
-export interface UpdateMemberDTO {
-  gender?: 'male' | 'female';
-  firstname?: string;
-  lastname?: string;
-  email?: string;
-  password?: string;
-  phone?: string;
-  birthdate?: string;
-  city?: string;
-  country?: string;
-  photo?: string;
-  profession?: string;
-  company?: string;
-  skills?: string[];
-  membershipType?: 'Basic' | 'Premium' | 'Enterprise';
-  bio?: string;
-  linkedinUrl?: string;
-  isManager?: boolean;
-}
 
 /**
  * MemberController - Couche Présentation
@@ -69,6 +11,19 @@ export interface UpdateMemberDTO {
  */
 export class MemberController {
   constructor(private memberService: MemberService) {}
+
+  private toSafeMember(obj: unknown) {
+    const json = (obj && typeof obj === 'object' && typeof (obj as any).toJSON === 'function')
+        ? (obj as any).toJSON()
+        : obj;
+
+    if (json && typeof json === 'object') {
+      const { password: _ignored, ...rest } = json as Record<string, unknown>;
+      return rest;
+    }
+    return json;
+  }
+
 
   /**
    * Récupère tous les membres de la communauté
@@ -78,14 +33,14 @@ export class MemberController {
       // TODO: Implémentez cette méthode
       // 1. Appeler le service pour récupérer tous les membres
       // 2. Retourner la liste au format JSON
-      
+
       const members = await this.memberService.getAllMembers();
       res.status(200).json({
         success: true,
-        data: members.map(member => member.toJSON()),
+        data: members.map(member => this.toSafeMember(member)),
         count: members.length
       });
-      
+
     } catch (error) {
       console.error('Erreur lors de la récupération des membres:', error);
       res.status(500).json({
@@ -157,7 +112,7 @@ export class MemberController {
 
       res.status(200).json({
         success: true,
-        data: member.toJSON()
+        data: this.toSafeMember(member)
       });
 
     } catch (error) {
@@ -192,11 +147,13 @@ export class MemberController {
         return;
       }
 
+      memberData.password = await bcrypt.hash(memberData.password, 10);
+
       const newMember = await this.memberService.createMember(memberData);
 
       res.status(201).json({
         success: true,
-        data: newMember.toJSON(),
+        data: this.toSafeMember(newMember),
         message: 'Membre créé avec succès'
       });
 
@@ -235,6 +192,11 @@ export class MemberController {
         return;
       }
 
+      // Hachage du mot de passe si fourni dans la mise à jour
+      if (updateData.password) {
+        updateData.password = await bcrypt.hash(updateData.password, 10);
+      }
+
       const updatedMember = await this.memberService.updateMember(id, updateData);
 
       if (!updatedMember) {
@@ -247,7 +209,7 @@ export class MemberController {
 
       res.status(200).json({
         success: true,
-        data: updatedMember.toJSON(),
+        data: this.toSafeMember(updatedMember),
         message: 'Membre mis à jour avec succès'
       });
 
@@ -259,6 +221,7 @@ export class MemberController {
       });
     }
   }
+
 
   /**
    * Supprime un membre (gestionnaire uniquement)
@@ -314,25 +277,23 @@ export class MemberController {
    */
   async filterMembers(req: Request, res: Response): Promise<void> {
     try {
-      const filters: MemberFilters = {
+      const rawFilters: MemberFilters = {
         name: req.query.name as string,
         profession: req.query.profession as string,
         membershipType: req.query.membershipType as any,
         city: req.query.city as string
       };
 
-      // Nettoyer les filtres vides
-      Object.keys(filters).forEach(key => {
-        if (!filters[key as keyof MemberFilters]) {
-          delete filters[key as keyof MemberFilters];
-        }
-      });
+      // Nettoyer les filtres vides sans muter l'objet typé strictement
+      const filters = Object.fromEntries(
+          Object.entries(rawFilters).filter(([, v]) => v != null && v !== '')
+      ) as MemberFilters;
 
       const members = await this.memberService.filterMembers(filters);
 
       res.status(200).json({
         success: true,
-        data: members.map(member => member.toJSON()),
+        data: members.map(member => this.toSafeMember(member)),
         count: members.length,
         filters
       });
