@@ -207,6 +207,7 @@ nav .navbar .logo .square {
 
 .dashboard {
   padding: 50px 100px;
+  margin: 0 170px;
   background-color: #F8FAFC;
 }
 .dashboard .intro p {
@@ -225,6 +226,7 @@ nav .navbar .logo .square {
 }
 .dashboard .stats .card h2 {
   margin-bottom: 5px;
+  font-size: 35px;
 }
 .dashboard .stats .card .square {
   display: block;
@@ -232,4 +234,96 @@ nav .navbar .logo .square {
   height: 40px;
   background-color: black;
   border-radius: 10px;
+}
+.dashboard .stats .card .square.blue {
+  background: linear-gradient(70deg, #387CF3, #2155DC);
+}
+.dashboard .stats .card .square.green {
+  background: linear-gradient(70deg, #37B57F, #2D9A6C);
+}
+.dashboard .stats .card .square.violet {
+  background: linear-gradient(70deg, #8957F4, #7E3EEE);
+}
+.dashboard .stats .card .square.orange {
+  background: linear-gradient(70deg, #F29A0B, #DC7C05);
+}
+.dashboard .stats .card p:not(.green) {
+  margin-bottom: 10px;
+  color: rgba(0, 0, 0, 0.5);
+}
+.dashboard .stats .card .green {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.dashboard .stats .card .green p {
+  color: #70C084;
+  margin: 5px;
+}
+.dashboard .stats .card .green span {
+  display: block;
+  background-color: #70C084;
+  width: 15px;
+  height: 15px;
+  border-radius: 5px;
+}
+.dashboard .grid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+.dashboard .grid .discoverCommunity,
+.dashboard .grid .recentActivity {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 30px;
+}
+.dashboard .grid .discoverCommunity h2,
+.dashboard .grid .recentActivity h2 {
+  margin: 10px 0;
+}
+.dashboard .grid .discoverCommunity p,
+.dashboard .grid .recentActivity p {
+  color: rgba(0, 0, 0, 0.5);
+}
+.dashboard .grid .discoverCommunity .card {
+  background: linear-gradient(150deg, #6973DA, #7355B1);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.dashboard .grid .discoverCommunity .card h2 {
+  color: #fff;
+}
+.dashboard .grid .discoverCommunity .card p,
+.dashboard .grid .discoverCommunity .card .skill {
+  color: rgba(255, 255, 255, 0.8);
+}
+.dashboard .grid .discoverCommunity .card .skill {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+.dashboard .grid .discoverCommunity .card button {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.dashboard .grid .discoverCommunity .card button span {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 20px;
 }/*# sourceMappingURL=index.css.map */
