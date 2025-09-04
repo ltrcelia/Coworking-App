@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Member {
+  id             Int           @id @map("_id")
+  gender         String
+  firstname      String
+  lastname       String
+  email          String        @unique
+  password       String
+  phone          String
+  birthdate      String
+  city           String
+  country        String
+  photo          String
+  profession     String
+  company        String
+  skills         String[]
+  membershipType String
+  joinDate       String
+  bio            String
+  linkedinUrl    String
+  isManager      Boolean
+  privateRoom    PrivateRoom[]
+  bookings       Booking[]
+}
+
+model Booking {
+  id        Int    @id @map("_id")
+  memberId  Int
+  Member    Member @relation(fields: [memberId], references: [id])
+  startDate String
+  endDate   String
+  type      String
+  roomId    Int
+  Room      Room?  @relation(fields: [roomId], references: [id])
+  eventId   Int
+  Event     Event? @relation(fields: [eventId], references: [id])
+}
+
+model Event {
+  id             Int    @id @map("_id")
+  title          String
+  startDate      String
+  endDate        String
+  seatsAvailable Int
+  participants   Int[]
+
+  Booking Booking[]
+}
+
+model Room {
+  id       Int    @id @map("_id")
+  name     String
+  capacity Int
+  location String
+  status   String
+
+  bookings Booking[]
+}
+
+model PrivateRoom {
+  privateRoomId String  @id @map("_id")
+  Member        Member? @relation(fields: [memberId], references: [id])
+  memberId      Int
+}
+
+model MeetingRoom {
+  meetingRoomId String @id @map("_id")
+}
+
+model Notification {
+  id               Int      @id @map("_id")
+  memberId         Int
+  senderId         Int
+  type             String
+  message          String
+  createdAt        DateTime
+  read             Boolean
+  attendanceStatus String
+  connectionStatus String
+}
