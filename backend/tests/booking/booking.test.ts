@@ -4,13 +4,13 @@ import {Event} from "../../domain/entities/Event";
 import {MeetingRoom} from "../../domain/entities/MeetingRoom";
 import {Member} from "../../domain/entities/Member";
 import {PrivateRoom} from "../../domain/entities/PrivateRoom";
-import {InMemoryBookingRepository} from "../../infrastructure/repositories/InMemoryBookingRepository";
-import {InMemoryMemberRepository} from "../../infrastructure/repositories/InMemoryMemberRepository";
+import {InMemoryBookingRepository} from "../../infrastructure/repositories/memory.booking.repository";
+import {InMemoryMemberRepository} from "../../infrastructure/repositories/memory.member.repository";
 
 describe('Use case: Booking management', () => {
     let bookingRepository = new InMemoryBookingRepository();
     let memberRepository = new InMemoryMemberRepository();
-    let useCase = new BookingUseCase(bookingRepository);
+    let useCase = new BookingUseCase(bookingRepository, memberRepository);
 
     const manager = new Member({
         id: "21",
@@ -94,18 +94,13 @@ describe('Use case: Booking management', () => {
         seatsAvailable: 0,
     })
 
-    it('should not accept booking if the logged user is not an admin', () => {
-        let members = memberRepository.findAll();
-        // console.log(members);
+    it('should not accept booking if the logged user is not an admin', async () => {
+        await memberRepository.save(manager);
+        await memberRepository.save(member);
 
-        memberRepository.save(manager)
-        // memberRepository.save(member)
-        // console.log(meetingRoomBooking)
-        //  console.log(members);
-        let id7 = memberRepository.findById("7");
-        // console.log(id7)
-
-        expect(useCase.handleRoomBookingRequest(meetingRoomBooking, member.id)).rejects.toThrow('You are not authorized to accept this request');
+        await expect(
+            useCase.handleRoomBookingRequest(meetingRoomBooking, member.id)
+        ).rejects.toThrow('You are not authorized to accept this request');
     });
 
     it('should not accept booking if there are missing information', () => {

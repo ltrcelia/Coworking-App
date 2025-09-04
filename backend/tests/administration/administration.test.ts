@@ -1,6 +1,6 @@
 import {AdministratorUseCase} from "../../application/use-cases/AdministratorUseCase";
 import {Member} from "../../domain/entities/Member";
-import {InMemoryMemberRepository} from "../../infrastructure/repositories/InMemoryMemberRepository";
+import {InMemoryMemberRepository} from "../../infrastructure/repositories/memory.member.repository";
 
 describe("Use case: administrate coworking space members", () => {
     let memberRepository = new InMemoryMemberRepository();

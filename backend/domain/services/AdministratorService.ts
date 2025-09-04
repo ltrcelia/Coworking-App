@@ -1,5 +1,5 @@
 import {MembershipType} from "@domain/entities/Member";
-import {InMemoryMemberRepository} from "../../infrastructure/repositories/InMemoryMemberRepository";
+import {InMemoryMemberRepository} from "@infrastructure/repositories/memory.member.repository";
 
 export class AdministratorService {
 

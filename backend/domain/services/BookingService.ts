@@ -1,6 +1,6 @@
-import {InMemoryBookingRepository} from "../../infrastructure/repositories/InMemoryBookingRepository";
-import {InMemoryMemberRepository} from "../../infrastructure/repositories/InMemoryMemberRepository";
-import {Booking, BookingType, BookingStatus} from '../entities/Booking';
+import {InMemoryBookingRepository} from "../../infrastructure/repositories/memory.booking.repository";
+import {InMemoryMemberRepository} from "../../infrastructure/repositories/memory.member.repository";
+import {Booking, BookingData, BookingStatus, BookingType} from '../entities/Booking';
 import {Notification} from '../entities/Notification';
 
 export class BookingService {
@@ -12,15 +12,17 @@ export class BookingService {
     /**
      * Crée une nouvelle réservation pour une salle ou événement
      */
-    newBooking(startDate: string, endDate: string, roomId: string, memberId: string, type: BookingType, status: BookingStatus): Booking {
+    newBooking(data: {
+        startDate: string,
+        endDate: string,
+        roomId: string,
+        memberId: string,
+        type: BookingType,
+        status: BookingStatus
+    }): Booking {
         const booking = new Booking({
             id: crypto.randomUUID(),
-            memberId,
-            roomId,
-            type,
-            startDate,
-            endDate,
-            status
+            ...data,
         });
 
         this.bookings.push(booking);
@@ -29,9 +31,9 @@ export class BookingService {
         this.notifications.push(
             new Notification({
                 id: crypto.randomUUID(),
-                memberId,
-                type,
-                message: `Votre réservation pour la salle ${roomId} est confirmée du ${startDate} au ${endDate}`,
+                memberId: data.memberId,
+                type: data.type,
+                message: `Votre réservation pour la salle ${data.roomId} est confirmée du ${data.startDate} au ${data.endDate}`,
                 createdAt: new Date().toISOString()
             })
         );
@@ -75,9 +77,6 @@ export class BookingService {
     }
 
     async handleRoomBookingRequest(booking: Booking, memberId: string): Promise<boolean> {
-        const allMembers = await this.memberRepository.findAll();
-        console.log(allMembers);
-
         const member = await this.memberRepository.findById(memberId);
 
         if (!member) throw new Error(`Member with ID ${memberId} not found`);
@@ -106,5 +105,21 @@ export class BookingService {
     async handleEventBookingRequest(eventId: string, memberId: string, seats: number): Promise<boolean> {
         // todo automatic booking if enough seats available
         return true;
+    }
+
+    /**
+     * Retourner toutes les réservations
+     */
+    displayBookingList(): Booking[] {
+        return [...this.bookings];
+    }
+
+    /**
+     * Filtrer les réservations selon un critère
+     */
+    filterBooking(criteria: Partial<BookingData>): Booking[] {
+        return this.bookings.filter(booking =>
+            Object.entries(criteria).every(([key, value]) => (booking as any)[key] === value)
+        );
     }
 }
