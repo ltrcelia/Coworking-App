@@ -33,5 +33,4 @@ export class AuthenticationService {
     verifyToken(token: string): AuthPayload {
         return this.tokenManager.verifyToken(token);
     };
-
 }
