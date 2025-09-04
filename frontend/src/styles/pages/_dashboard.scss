@@ -1,24 +1,38 @@
 .dashboard {
     padding: 50px 100px;
     margin: 0 170px;
-    background-color: #F8FAFC;
     .intro {
         p {
             color: rgba(0, 0, 0, 0.5);
         }
+        .name {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            .emoji {
+                font-size: 45px;
+                margin: 0;
+                color: black;
+            }
+        }
     }
     .stats {
-        display: flex;
-        justify-content: space-between;
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
         .card {
             background-color: #fff;
             border: 1px solid rgba(0, 0, 0, 0.1);
             border-radius: 10px;
-            width: 300px;
             padding: 20px;
+            box-shadow: 0px 1px 10px rgb(188 187 210 / 20%);
             h2 {
                 margin-bottom: 5px;
                 font-size: 35px;
+            }
+            p {
+                font-size: 13px;
             }
             .square {
                 display: block;
@@ -26,6 +40,7 @@
                 height: 40px;
                 background-color: black;
                 border-radius: 10px;
+                position: relative;
                 &.blue {
                     background: linear-gradient(70deg, #387CF3, #2155DC);
                 }
@@ -38,18 +53,24 @@
                 &.orange {
                     background: linear-gradient(70deg, #F29A0B, #DC7C05);
                 }
+                .icone {
+                    position: absolute;
+                    top: 8px;
+                    left: 8px;
+                }
             }
             p:not(.green) {
                 margin-bottom: 10px;
                 color: rgba(0, 0, 0, 0.5);
             }
             .green {
-                display: flex;
-                align-items: center;
-                gap: 10px;
                 p {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
                     color: #70C084;
                     margin: 5px;
+                    font-size: 12px;
                 }
                 span {
                     display: block;
@@ -72,15 +93,46 @@
             border: 1px solid rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             padding: 30px;
+            box-shadow: 0px 1px 10px rgb(188 187 210 / 20%);
             h2 {
                 margin: 10px 0;
+                font-size: 1.4rem;
             }
             p {
                 color: rgba(0, 0, 0, 0.5);
             }
+            .newMembers {
+                .memberBloc {
+                    padding-left: 40px;
+                    margin-bottom: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    .date{
+                        font-size: 13px;
+                    }  
+                    .membersInfos {
+                        p {
+                            font-size: 12px;
+                        }
+                        .title {
+                            font-size: 14px;
+                            font-weight: 700;
+                            color: #000;
+                        }
+                    }
+                }
+                .line {
+                    display: block;
+                    width: 100%;
+                    height: 1px;
+                    background-color: rgba(0, 0, 0, 0.07);
+                }
+            }
         }
         .discoverCommunity {
             .card {
+                margin-top: 25px;
                 background: linear-gradient(150deg, #6973DA, #7355B1);
                 padding: 30px;
                 border-radius: 20px;
@@ -90,27 +142,40 @@
                 justify-content: center;
                 h2 {
                     color: #fff;
-
+                    margin-bottom: 15px;
                 }
                 p,
                 .skill {
                     color: rgba(255, 255, 255, 0.8);
                 }
-                .skill {
-                    background-color: rgba(255, 255, 255, 0.15);
-                    padding: 5px 10px;
-                    border-radius: 20px;
-                    font-size: 12px;
+                p {
+                    margin: 5px;
+                    font-size: 14px;
+                }
+                .skills {
+                    display: flex;
+                    gap: 10px;
+                    margin: 15px 0;
+                    .skill {
+                        background-color: rgba(255, 255, 255, 0.2);
+                        padding: 8px 12px;
+                        border-radius: 20px;
+                        font-size: 12px;
+                        font-weight: 600;
+                        color: #fff;
+                    }
                 }
                 button {
-                    background-color: rgba(255, 255, 255, 0.15);
+                    background-color: rgba(255, 255, 255, 0.2);
                     color: #fff;
                     border: 1px solid rgba(255, 255, 255, 0.3);
                     border-radius: 20px;
-                    padding: 10px 15px;
+                    padding: 10px 25px;
                     display: flex;
                     align-items: center;
                     gap: 10px;
+                    font-size: 14px;
+                    cursor: pointer;
                     span {
                         display: block;
                         width: 20px;
@@ -118,6 +183,19 @@
                         background-color: #fff;
                         border-radius: 20px;
                     }
+                }
+                .desc {
+                    margin-bottom: 17px;
+                    text-align: center;
+                    width: 80%;
+                }
+                .blocImg {
+                    background-color: #FFF;
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 70px;
+                    margin-bottom: 20px;
+                    border: 4px solid #cacbdd;
                 }
             }
         }

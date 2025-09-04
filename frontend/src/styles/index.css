@@ -5,10 +5,16 @@
 
 body {
   margin: 0;
+  background-color: #F8FAFC;
 }
 
+nav {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.0901960784);
+}
 nav .navbar {
-  padding: 10px 75px;
+  margin: 0 240px;
+  padding: 10px 0;
   display: flex;
   gap: 10px;
 }
@@ -31,6 +37,9 @@ nav .navbar ul a:hover {
 }
 nav .navbar ul a:hover .round {
   background-color: #677FEA;
+}
+nav .navbar ul a:hover li {
+  color: #677FEA;
 }
 nav .navbar ul a li {
   display: flex;
@@ -61,6 +70,12 @@ nav .navbar .logo .square {
   width: 35px;
   height: 35px;
   background-color: #6A72D9;
+  position: relative;
+}
+nav .navbar .logo .square .img {
+  position: absolute;
+  left: 5px;
+  top: 4px;
 }
 
 .page {
@@ -90,6 +105,12 @@ nav .navbar .logo .square {
   width: 55px;
   height: 55px;
   background-color: #6A72D9;
+  position: relative;
+}
+.page .LoginPage .loginHead .square .img {
+  position: absolute;
+  left: 8px;
+  top: 8px;
 }
 .page .LoginPage .loginHead h1 {
   margin-bottom: 5px;
@@ -107,21 +128,17 @@ nav .navbar .logo .square {
 .page .LoginPage form .inputBloc .inputInfos label {
   font-size: 15px;
 }
+.page .LoginPage form .inputBloc .inputInfos .icon {
+  position: absolute;
+  top: 34px;
+  left: 16px;
+}
 .page .LoginPage form .inputBloc .inputInfos input {
   height: 40px;
   border: 1px solid rgb(230, 230, 230);
   border-radius: 10px;
   margin-bottom: 25px;
   padding: 0 45px;
-}
-.page .LoginPage form .inputBloc .inputInfos .round {
-  position: absolute;
-  top: 35px;
-  left: 15px;
-  display: block;
-  width: 15px;
-  height: 15px;
-  background-color: #6A72D9;
 }
 .page .LoginPage form button {
   display: flex;
@@ -208,25 +225,39 @@ nav .navbar .logo .square {
 .dashboard {
   padding: 50px 100px;
   margin: 0 170px;
-  background-color: #F8FAFC;
 }
 .dashboard .intro p {
   color: rgba(0, 0, 0, 0.5);
 }
-.dashboard .stats {
+.dashboard .intro .name {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+.dashboard .intro .name .emoji {
+  font-size: 45px;
+  margin: 0;
+  color: black;
+}
+.dashboard .stats {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 .dashboard .stats .card {
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  width: 300px;
   padding: 20px;
+  box-shadow: 0px 1px 10px rgba(188, 187, 210, 0.2);
 }
 .dashboard .stats .card h2 {
   margin-bottom: 5px;
   font-size: 35px;
+}
+.dashboard .stats .card p {
+  font-size: 13px;
 }
 .dashboard .stats .card .square {
   display: block;
@@ -234,6 +265,7 @@ nav .navbar .logo .square {
   height: 40px;
   background-color: black;
   border-radius: 10px;
+  position: relative;
 }
 .dashboard .stats .card .square.blue {
   background: linear-gradient(70deg, #387CF3, #2155DC);
@@ -247,18 +279,22 @@ nav .navbar .logo .square {
 .dashboard .stats .card .square.orange {
   background: linear-gradient(70deg, #F29A0B, #DC7C05);
 }
+.dashboard .stats .card .square .icone {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
 .dashboard .stats .card p:not(.green) {
   margin-bottom: 10px;
   color: rgba(0, 0, 0, 0.5);
 }
-.dashboard .stats .card .green {
+.dashboard .stats .card .green p {
   display: flex;
   align-items: center;
-  gap: 10px;
-}
-.dashboard .stats .card .green p {
+  gap: 5px;
   color: #70C084;
   margin: 5px;
+  font-size: 12px;
 }
 .dashboard .stats .card .green span {
   display: block;
@@ -279,16 +315,48 @@ nav .navbar .logo .square {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 30px;
+  box-shadow: 0px 1px 10px rgba(188, 187, 210, 0.2);
 }
 .dashboard .grid .discoverCommunity h2,
 .dashboard .grid .recentActivity h2 {
   margin: 10px 0;
+  font-size: 1.4rem;
 }
 .dashboard .grid .discoverCommunity p,
 .dashboard .grid .recentActivity p {
   color: rgba(0, 0, 0, 0.5);
 }
+.dashboard .grid .discoverCommunity .newMembers .memberBloc,
+.dashboard .grid .recentActivity .newMembers .memberBloc {
+  padding-left: 40px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashboard .grid .discoverCommunity .newMembers .memberBloc .date,
+.dashboard .grid .recentActivity .newMembers .memberBloc .date {
+  font-size: 13px;
+}
+.dashboard .grid .discoverCommunity .newMembers .memberBloc .membersInfos p,
+.dashboard .grid .recentActivity .newMembers .memberBloc .membersInfos p {
+  font-size: 12px;
+}
+.dashboard .grid .discoverCommunity .newMembers .memberBloc .membersInfos .title,
+.dashboard .grid .recentActivity .newMembers .memberBloc .membersInfos .title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #000;
+}
+.dashboard .grid .discoverCommunity .newMembers .line,
+.dashboard .grid .recentActivity .newMembers .line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.07);
+}
 .dashboard .grid .discoverCommunity .card {
+  margin-top: 25px;
   background: linear-gradient(150deg, #6973DA, #7355B1);
   padding: 30px;
   border-radius: 20px;
@@ -299,26 +367,40 @@ nav .navbar .logo .square {
 }
 .dashboard .grid .discoverCommunity .card h2 {
   color: #fff;
+  margin-bottom: 15px;
 }
 .dashboard .grid .discoverCommunity .card p,
 .dashboard .grid .discoverCommunity .card .skill {
   color: rgba(255, 255, 255, 0.8);
 }
-.dashboard .grid .discoverCommunity .card .skill {
-  background-color: rgba(255, 255, 255, 0.15);
-  padding: 5px 10px;
+.dashboard .grid .discoverCommunity .card p {
+  margin: 5px;
+  font-size: 14px;
+}
+.dashboard .grid .discoverCommunity .card .skills {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+.dashboard .grid .discoverCommunity .card .skills .skill {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 8px 12px;
   border-radius: 20px;
   font-size: 12px;
+  font-weight: 600;
+  color: #fff;
 }
 .dashboard .grid .discoverCommunity .card button {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.2);
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
-  padding: 10px 15px;
+  padding: 10px 25px;
   display: flex;
   align-items: center;
   gap: 10px;
+  font-size: 14px;
+  cursor: pointer;
 }
 .dashboard .grid .discoverCommunity .card button span {
   display: block;
@@ -326,4 +408,155 @@ nav .navbar .logo .square {
   height: 20px;
   background-color: #fff;
   border-radius: 20px;
+}
+.dashboard .grid .discoverCommunity .card .desc {
+  margin-bottom: 17px;
+  text-align: center;
+  width: 80%;
+}
+.dashboard .grid .discoverCommunity .card .blocImg {
+  background-color: #FFF;
+  width: 100px;
+  height: 100px;
+  border-radius: 70px;
+  margin-bottom: 20px;
+  border: 4px solid #cacbdd;
+}
+
+.communityPage {
+  padding: 50px 100px;
+  margin: 0 170px;
+}
+.communityPage .intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.communityPage .intro h1 {
+  margin: 10px;
+}
+.communityPage .intro p {
+  text-align: center;
+  line-height: 25px;
+  margin: 10px;
+}
+.communityPage p {
+  color: rgba(0, 0, 0, 0.5);
+}
+.communityPage .stats {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0px 1px 10px rgba(188, 187, 210, 0.2);
+  width: 100%;
+  padding: 20px;
+}
+.communityPage .stats .card {
+  text-align: center;
+}
+.communityPage .stats .card h2 {
+  color: #6973DA;
+  margin: 5px;
+  font-size: 30px;
+}
+.communityPage .stats .card p {
+  margin: 0px;
+  font-size: 13px;
+}
+.communityPage .community {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.communityPage .community .card {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0px 1px 10px rgba(188, 187, 210, 0.2);
+  position: relative;
+}
+.communityPage .community .card .name {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.communityPage .community .card .name .blocImg {
+  background-color: #6973DA;
+  width: 60px;
+  height: 60px;
+  border-radius: 70px;
+}
+.communityPage .community .card .name .blocText h3 {
+  font-size: 16px;
+}
+.communityPage .community .card .name .blocText p {
+  margin: 5px;
+}
+.communityPage .community .card .name .blocText .profession {
+  color: #6973DA;
+  font-size: 14px;
+}
+.communityPage .community .card .skills {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.communityPage .community .card .skills p {
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 7px 12px;
+  font-weight: 700;
+  margin: 0;
+}
+.communityPage .community .card span {
+  display: block;
+  height: 20px;
+  padding: 5px 10px 0 10px;
+  background-color: rgb(218, 218, 240);
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+.communityPage .community .card p {
+  font-size: 13px;
+}
+.communityPage .community .card .cta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.communityPage .community .card .cta button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 50%;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  cursor: pointer;
+}
+.communityPage .community .card .cta button:nth-child(1) {
+  color: #fff;
+  background: linear-gradient(70deg, #6973DA, #7355B1);
+}
+.communityPage .community .card .linkedin {
+  color: #2577B5;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  fill: #2577B5;
 }/*# sourceMappingURL=index.css.map */
