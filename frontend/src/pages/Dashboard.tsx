@@ -117,49 +117,49 @@ const Dashboard: React.FC = () => {
       </div>
 
       <div className="grid">
-        {member && (
-          <div className="discoverCommunity">
-            <h2>Découvrir la communauté</h2>
-            <p>Rencontrer un nouveau membre et élarissez votre réseau</p>
-            <div className="card">
-              <div className="blocImg">
-                <img src={member.photo} alt={member.firstname} />
-              </div>
-              <h2>{member.firstname} {member.lastname}</h2>
-              <p>{member.profession}</p>
-              <p>{member.company} • {member.city}</p>
-              <div className="skills">
-                {member.skills?.map((skill, index) => (
-                  <div className="skill" key={index}>{skill}</div>
-                ))}
-              </div>
-              <p className="desc">"{member.bio}"</p>
-              <button onClick={getRandom}><TfiReload fill="white" /> Découvrir un autre membre</button>
+        {/* {member && ( */}
+        <div className="discoverCommunity">
+          <h2>Découvrir la communauté</h2>
+          <p>Rencontrer un nouveau membre et élarissez votre réseau</p>
+          <div className="card">
+            <div className="blocImg">
+              <img src="member.photo" alt="member.firstname" />
             </div>
+            <h2>member.firstname member.lastname</h2>
+            <p>member.profession</p>
+            <p>member.company • member.city</p>
+            <div className="skills">
+              {/* member.skills?.map((skill, index) => ( */}
+              <div className="skill">Figma</div>
+              {/* ))} */}
+            </div>
+            <p className="desc">"member.bio"</p>
+            <button onClick={getRandom}><TfiReload fill="white" /> Découvrir un autre membre</button>
           </div>
-        )};
+        </div>
+        {/* )}; */}
 
         <div className="recentActivity">
           <h2>Activité récente</h2>
           <p>Les dernières nouvelles de votre communauté</p>
-          {members?.map((member) => {
-            const joinDate = new Date(member.joinDate);
-            const now = new Date();
-            const diffHours = Math.floor((now.getTime() - joinDate.getTime()) / (1000 * 60 * 60));
+          {/* {members?.map((member) => { */}
+          {/* const joinDate = new Date(member.joinDate);
+          const now = new Date();
+          const diffHours = Math.floor((now.getTime() - joinDate.getTime()) / (1000 * 60 * 60)); */}
 
-            return (
-              <div className="newMembers" key={member.id}>
-                <div className="memberBloc">
-                  <div className="membersInfos">
-                    <p className="title">Nouveau membre rejoint</p>
-                    <p>{member.firstname} {member.lastname} ({member.profession}) a rejoint la communauté</p>
-                  </div>
-                  <p className="date">Il y a {diffHours}h</p>
-                </div>
-                <span className="line"></span>
+          {/* return ( */}
+          <div className="newMembers">
+            <div className="memberBloc">
+              <div className="membersInfos">
+                <p className="title">Nouveau membre rejoint</p>
+                <p>member.firstname member.lastname (member.profession) a rejoint la communauté</p>
               </div>
-            );
-          })}
+              <p className="date">Il y a 2h</p>
+            </div>
+            <span className="line"></span>
+          </div>
+          {/* ); */}
+          {/* })} */}
         </div>
       </div>
     </div>

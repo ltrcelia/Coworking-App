@@ -41,15 +41,15 @@ const Navbar: React.FC = () => {
               <FaGear fill="grey" /> Paramètres
             </li>
           </NavLink>
-          {/* <NavLink to="/mon-profil">
+          <NavLink to="/mon-profil">
             <span className="round"></span>
             <li>
               Mon profil
             </li>
-          </NavLink> */}
+          </NavLink>
           <NavLink to="/connexion">
             <li>
-              <FaUser fill="grey" /> Mon profil
+              <FaUser fill="grey" />
             </li>
           </NavLink>
         </ul>
