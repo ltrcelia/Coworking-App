@@ -28,7 +28,8 @@ const Dashboard: React.FC = () => {
 
   const getRandom = async () => {
     try {
-      const response = await axios.get("/api/members/random");
+      const response = await axios.get("http://localhost:3001/api/members/random");
+      console.log("response.data:", response.data);
       setMember(response.data);
     } catch (err) {
       console.error("Erreur lors du chargement du membre :", err);
@@ -41,8 +42,8 @@ const Dashboard: React.FC = () => {
 
   const fetchMembers = async () => {
     try {
-      const response = await axios.get("/api/members");
-      setMembers(response.data.data);
+      const response = await axios.get("/api/members/");
+      setMembers(response.data);
     } catch (err) {
       console.error(err);
     }
@@ -52,13 +53,13 @@ const Dashboard: React.FC = () => {
     fetchMembers();
   }, []);
 
-  if (!member) return <p>Chargement...</p>;
-
   return (
     <div className="dashboard">
       <div className="intro">
         <div className="name">
-          <h1>Bonjour {member.firstname} !</h1>
+          {member && (
+            <h1>Bonjour {member.firstname} !</h1>
+          )}
           <p className="emoji">👋</p>
         </div>
         <p>Découvrez votre communauté Corworkspace et connecter-vous avec vos collègues</p>
