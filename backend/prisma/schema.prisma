@@ -43,6 +43,7 @@ model Booking {
   Room      Room?  @relation(fields: [roomId], references: [id])
   eventId   String
   Event     Event? @relation(fields: [eventId], references: [id])
+  status    String
 }
 
 model Event {

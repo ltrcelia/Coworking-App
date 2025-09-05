@@ -1,4 +1,3 @@
-import {BookingStatus, BookingType} from "@domain/entities/Booking";
 import {IsDate, IsNotEmpty, IsString} from "class-validator";
 
 export class CreateBookingDto {

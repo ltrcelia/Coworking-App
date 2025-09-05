@@ -1,5 +1,5 @@
 import {Booking as BookingModel} from "../../..//generated/prisma/client";
-import {Booking, BookingStatus} from "@domain/entities/Booking";
+import {Booking, BookingData, BookingStatus, BookingType} from "@domain/entities/Booking";
 
 export class BookingMapper {
     static toPersistence(booking: any) {
@@ -14,10 +14,23 @@ export class BookingMapper {
         }
     }
 
-    static toCore(model: BookingModel) {
-        return new Booking({
-            ...model,
-            status: model.status as BookingStatus,
-        })
+    private static mapPrismaToBookingData(model: BookingModel): BookingData {
+        const { id, memberId, startDate, endDate, type, roomId, status } = model;
+
+        return {
+            id,
+            memberId,
+            startDate,
+            endDate,
+            type: type as unknown as BookingType,
+            roomId,
+            status: status as BookingStatus,
+        };
     }
+
+    static toCore(model: BookingModel) {
+        const data = BookingMapper.mapPrismaToBookingData(model);
+        return new Booking(data);
+    }
+
 }

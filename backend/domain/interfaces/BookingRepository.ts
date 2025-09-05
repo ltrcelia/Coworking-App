@@ -1,7 +1,7 @@
-import {Booking, BookingData, BookingStatus} from "@domain/entities/Booking";
+import {Booking, BookingData} from "@domain/entities/Booking";
 
 export interface BookingRepository {
-    save(bookingData: BookingData): Promise<Booking>;
+    save(bookingData: BookingData): Promise<void>;
 
     update(id: string, booking: Booking): Promise<Booking | null>;
 
