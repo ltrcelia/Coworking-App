@@ -11,6 +11,10 @@ COPY tsconfig.json ./
 # Installer les dépendances
 RUN npm install
 
+# Copier le dossier Prisma et générer les fichiers client
+COPY prisma ./prisma
+RUN npx prisma generate
+
 # Copier le code source
 COPY . .
 
@@ -31,6 +35,7 @@ WORKDIR /app
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/prisma ./prisma
 
 # Changer le propriétaire des fichiers
 RUN chown -R coworkspace:nodejs /app
