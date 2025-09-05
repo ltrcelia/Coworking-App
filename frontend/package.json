@@ -20,11 +20,12 @@
     "globals": "^16.3.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
-    "vite": "^7.1.2"
+    "vite": "^7.1.4"
   },
   "dependencies": {
     "@types/node": "^24.3.0",
     "axios": "^1.11.0",
+    "node": "^20.19.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.5.0",

@@ -1,6 +1,7 @@
 import { MemberRepository } from "@domain/interfaces/MemberRepository";
 import { Member, MembershipType, MemberData } from "@domain/entities/Member";
 
+// TODO merge with InMemoryMemberRepository
 export class MemberRepositoryImpl implements MemberRepository {
     private members: Member[] = [
         new Member({

@@ -1,9 +1,9 @@
-import {PrismaClient} from '@prisma/client'
+import {PrismaClient} from '../generated/prisma/client'
 import bcrypt from 'bcrypt'
 
 const prisma = new PrismaClient().$extends({
     query: {
-        user: {
+        member: {
             async $allOperations({operation, args, query}: any) {
                 if (
                     ['create', 'update'].includes(operation) &&

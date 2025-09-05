@@ -9,7 +9,7 @@ datasource db {
 }
 
 model Member {
-  id             Int           @id @map("_id")
+  id             String        @id @map("_id")
   gender         String
   firstname      String
   lastname       String
@@ -33,31 +33,32 @@ model Member {
 }
 
 model Booking {
-  id        Int    @id @map("_id")
-  memberId  Int
+  id        String @id @map("_id")
+  memberId  String
   Member    Member @relation(fields: [memberId], references: [id])
   startDate String
   endDate   String
   type      String
-  roomId    Int
+  roomId    String
   Room      Room?  @relation(fields: [roomId], references: [id])
-  eventId   Int
+  eventId   String
   Event     Event? @relation(fields: [eventId], references: [id])
+  status    String
 }
 
 model Event {
-  id             Int    @id @map("_id")
+  id             String   @id @map("_id")
   title          String
   startDate      String
   endDate        String
   seatsAvailable Int
-  participants   Int[]
+  participants   String[]
 
   Booking Booking[]
 }
 
 model Room {
-  id       Int    @id @map("_id")
+  id       String @id @map("_id")
   name     String
   capacity Int
   location String
@@ -69,7 +70,7 @@ model Room {
 model PrivateRoom {
   privateRoomId String  @id @map("_id")
   Member        Member? @relation(fields: [memberId], references: [id])
-  memberId      Int
+  memberId      String
 }
 
 model MeetingRoom {
@@ -77,7 +78,7 @@ model MeetingRoom {
 }
 
 model Notification {
-  id               Int      @id @map("_id")
+  id               String   @id @map("_id")
   memberId         Int
   senderId         Int
   type             String
