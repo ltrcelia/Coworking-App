@@ -36,6 +36,6 @@ app.use(adminRoutes)
 app.use(authenticationRoutes)
 app.use(eventRoutes)
 app.use(bookingRoutes)
-app.use(memberRoutes)
+app.use("api/members", memberRoutes)
 
 export default app;

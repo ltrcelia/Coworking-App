@@ -1,5 +1,5 @@
-import {Member} from "@domain/entities/Member";
-import {MemberFilters} from "@domain/interfaces/MemberRepository";
+import { Member } from "@domain/entities/Member";
+import { MemberFilters } from "@domain/interfaces/MemberRepository";
 
 /**
  * Interface pour le service des membres

@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import './styles/index.css';
 import Navbar from './components/Navbar.tsx';
 import Dashboard from "./pages/Dashboard";
@@ -9,11 +9,16 @@ import Profil from "./pages/Profil";
 import Login from "./pages/Login";
 
 const App: React.FC = () => {
+  const location = useLocation();
+  const hideHeader = location.pathname === "/connexion";
+
   return (
     <>
-      <header role="banner">
-        <Navbar />
-      </header>
+      {!hideHeader &&
+        <header role="banner">
+          <Navbar />
+        </header>
+      }
 
       <main role="main">
         <Routes>

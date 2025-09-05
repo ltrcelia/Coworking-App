@@ -38,7 +38,7 @@ services:
     volumes:
       - ./backend/uploads:/app/uploads
     ports:
-      - "3001:3000"
+      - "3001:3001"
     depends_on:
       database:
         condition: service_healthy
@@ -60,7 +60,7 @@ services:
     container_name: coworkspace-web
     restart: unless-stopped
     ports:
-      - "5173:5173"
+      - "3002:3002"
     depends_on:
       backend:
         condition: service_healthy
