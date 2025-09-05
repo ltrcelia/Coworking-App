@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaUsers } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
@@ -7,8 +8,42 @@ import { FaNetworkWired } from "react-icons/fa";
 import { FaRocket } from "react-icons/fa";
 import { FaCoffee } from "react-icons/fa";
 import { FaCalendar } from "react-icons/fa";
+import axios, { AxiosError } from "axios";
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
+  const [message, setMessage] = useState('');
+  const [form, setForm] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setMessage('');
+
+    try {
+      const response = await axios.post('http://localhost:3001/api/auth/', form);
+      const token = response.data.token;
+
+      if (!token) throw new Error("Token non reçu");
+
+      localStorage.setItem('jwt_token', token);
+      navigate("/");
+    } catch (err: unknown) {
+      let message = 'Email ou mot de passe incorrect';
+
+      if (axios.isAxiosError(err)) {
+        const axiosErr = err as AxiosError<{ message: string }>;
+        if (axiosErr.response?.data?.message) {
+          message = axiosErr.response.data.message;
+        }
+      }
+
+      setMessage(message);
+      console.error(err);
+    }
+  };
 
   return (
     <div className="page">
@@ -24,14 +59,14 @@ const Login: React.FC = () => {
         </div>
 
         <div className="loginForm">
-          <form>
+          <form onSubmit={handleLogin}>
             <div className="inputBloc">
               <div className="inputInfos">
                 <label htmlFor="email">Adresse email</label>
                 <div className="icon">
                   <FaEnvelope fill="#6A72D9" />
                 </div>
-                <input type="email" id='email' required />
+                <input type="email" id='email' required onChange={(e) => setForm({ ...form, email: e.target.value })} />
               </div>
 
               <div className="inputInfos">
@@ -39,7 +74,7 @@ const Login: React.FC = () => {
                 <div className="icon">
                   <FaLock fill="#6A72D9" />
                 </div>
-                <input type="password" id='password' required />
+                <input type="password" id='password' required onChange={(e) => setForm({ ...form, password: e.target.value })} />
               </div>
             </div>
 
@@ -47,6 +82,7 @@ const Login: React.FC = () => {
               <MdLogin fill="white" size={23} />
               Se connecter
             </button>
+            {message && <p style={{ color: message.includes('réussi') ? 'green' : 'red' }}>{message}</p>}
 
             <p className='forgot'>Mot de passe oublié ?</p>
 
