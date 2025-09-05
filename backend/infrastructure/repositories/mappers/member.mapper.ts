@@ -1,5 +1,5 @@
 import {Member} from "@domain/entities/Member";
-import {Member as MemberModel} from "../../..//generated/prisma/client";
+import {Member as MemberModel} from "../../../generated/prisma/client";
 
 export class MemberMapper {
     static toPersistence(member: any) {

@@ -49,7 +49,7 @@ prod:
 	@docker-compose up --build -d
 	@echo "$(GREEN)✅ Application démarrée !$(NC)"
 	@echo "$(YELLOW)🌐 Frontend: http://localhost:3001$(NC)"
-	@echo "$(YELLOW)🔌 API: http://localhost:3000/api$(NC)"
+	@echo "$(YELLOW)🔌 API: http://localhost:3001/api$(NC)"
 
 # Arrêter tous les services
 stop:

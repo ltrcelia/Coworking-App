@@ -1,4 +1,4 @@
-import {Booking as BookingModel} from "../../..//generated/prisma/client";
+import {Booking as BookingModel} from "../../../generated/prisma/client";
 import {Booking, BookingData, BookingStatus, BookingType} from "@domain/entities/Booking";
 
 export class BookingMapper {
