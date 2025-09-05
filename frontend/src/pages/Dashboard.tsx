@@ -57,9 +57,9 @@ const Dashboard: React.FC = () => {
     <div className="dashboard">
       <div className="intro">
         <div className="name">
-          {member && (
-            <h1>Bonjour {member.firstname} !</h1>
-          )}
+          {/* {member && ( */}
+          <h1>Bonjour member.firstname !</h1>
+          {/* )} */}
           <p className="emoji">👋</p>
         </div>
         <p>Découvrez votre communauté Corworkspace et connecter-vous avec vos collègues</p>
