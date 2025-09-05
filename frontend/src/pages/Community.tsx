@@ -20,7 +20,6 @@ interface Member {
     photo: string;
     joinDate: string;
     memberShip: string;
-    compagny: string;
     country: string;
 }
 
@@ -67,32 +66,32 @@ const Community: React.FC = () => {
             </div>
 
             <div className="community">
-                {member.map((member) => (
-                    <div className="card">
-                        <span>{member.memberShip}</span>
-                        <div className="name">
-                            <div className="blocImg">
-                                <img src={member.photo} alt={member.firstname} />
-                            </div>
-                            <div className="blocText">
-                                <h3>{member.firstname}</h3>
-                                <p className="profession">{member.profession}</p>
-                                <p> <FaBuilding fill="grey" /> {member.compagny}</p>
-                            </div>
+                {/* {member.map((member) => ( */}
+                <div className="card">
+                    <span>member.memberShip</span>
+                    <div className="name">
+                        <div className="blocImg">
+                            <img src="member.photo" alt="member.firstname" />
                         </div>
-                        <p><RiMapPin2Fill fill="grey" /> {member.city}, {member.country}</p>
-                        <div className="skills">
-                            <p>{member.skills}</p>
+                        <div className="blocText">
+                            <h3>member.firstname</h3>
+                            <p className="profession">member.profession</p>
+                            <p> <FaBuilding fill="grey" /> member.company</p>
                         </div>
-                        <div className="cta">
-                            <button><FaHandshake fill="white" size={17} /> Se connecter</button>
-                            <button><FaEye fill="grey" size={17} />Voir profil</button>
-                        </div>
-                        <p className="linkedin">
-                            <FaLinkedin fill="#2577B5" /> Voir sur Linkedin</p>
-                        <p><FaCalendar fill="grey" /> Membre depuis {member.joinDate}</p>
                     </div>
-                ))}
+                    <p><RiMapPin2Fill fill="grey" /> member.city, member.country</p>
+                    <div className="skills">
+                        <p>member.skills</p>
+                    </div>
+                    <div className="cta">
+                        <button><FaHandshake fill="white" size={17} /> Se connecter</button>
+                        <button><FaEye fill="grey" size={17} />Voir profil</button>
+                    </div>
+                    <p className="linkedin">
+                        <FaLinkedin fill="#2577B5" /> Voir sur Linkedin</p>
+                    <p><FaCalendar fill="grey" /> Membre depuis member.joinDate</p>
+                </div>
+                {/* ))} */}
             </div>
         </div>
     )
