@@ -23,7 +23,6 @@ export function createAuthService() {
 const { authService, memberRepository } = createAuthService();
 const authMiddleware = setupAuthMiddleware(authService, memberRepository);
 
-
 app.use(cors({
     origin: ['http://localhost:5173'],
 }))
