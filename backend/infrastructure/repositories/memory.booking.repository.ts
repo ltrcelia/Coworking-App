@@ -13,10 +13,9 @@ export class InMemoryBookingRepository implements BookingRepository {
         return this.bookings.length;
     }
 
-    async save(bookingData: BookingData): Promise<Booking> {
+    async save(bookingData: BookingData): Promise<void> {
         const booking = new Booking(bookingData);
         this.bookings.push(booking);
-        return booking;
     }
 
     async delete(id: string): Promise<boolean> {
