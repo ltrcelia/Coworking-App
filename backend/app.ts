@@ -5,10 +5,8 @@ import { InMemoryMemberRepository } from "@infrastructure/repositories/memory.me
 import { JwtTokenManager } from "@infrastructure/security/JwtTokenManager";
 import { setupAuthMiddleware } from "@presentation/middlewares/authMiddleware";
 import adminRoutes from "@presentation/routes/adminRoutes";
-import authenticationRoutes from "@presentation/routes/authenticationRoutes";
 import bookingRoutes from "@presentation/routes/bookingRoutes";
 import eventRoutes from "@presentation/routes/eventRoutes";
-import memberRoutes from "@presentation/routes/memberRoutes";
 import cors from 'cors';
 import express from 'express';
 
@@ -33,9 +31,7 @@ app.use(express.json());
 
 app.use(authMiddleware)
 app.use(adminRoutes)
-app.use(authenticationRoutes)
 app.use(eventRoutes)
 app.use(bookingRoutes)
-app.use(memberRoutes)
 
 export default app;

@@ -7,6 +7,7 @@ import { FaUser } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
 
 const Navbar: React.FC = () => {
+
   return (
     <nav role="navigation">
       <div className="navbar">

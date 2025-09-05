@@ -34,7 +34,7 @@ services:
       DATABASE_URL: mongodb://admin:password@database:27017/coworkspace?authSource=admin
       JWT_SECRET: ${JWT_SECRET:-your-super-secret-jwt-key}
       JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-24h}
-      CORS_ORIGIN: http://localhost:3002
+      CORS_ORIGIN: http://localhost:5173
     volumes:
       - ./backend/uploads:/app/uploads
     ports:
@@ -60,14 +60,14 @@ services:
     container_name: coworkspace-web
     restart: unless-stopped
     ports:
-      - "5173:5173"
+      - "5173:80"
     depends_on:
       backend:
         condition: service_healthy
     networks:
       - coworkspace-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/"]
+      test: ["CMD", "curl", "-f", "http://localhost:80/"]
       interval: 30s
       timeout: 10s
       retries: 3

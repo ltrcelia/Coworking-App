@@ -1,5 +1,5 @@
-// import { useState } from "react";
 import React from "react";
+import { useState, useEffect } from "react";
 import { FaArrowUp } from "react-icons/fa6";
 import { GoClockFill } from "react-icons/go";
 import { FaUsers } from "react-icons/fa";
@@ -7,15 +7,59 @@ import { FaHandshake } from "react-icons/fa";
 import { FaCalendarCheck } from "react-icons/fa"
 import { FaTrophy } from "react-icons/fa";
 import { TfiReload } from "react-icons/tfi";
+import axios from "axios";
+
+interface Member {
+  id: string;
+  firstname: string;
+  lastname: string;
+  profession: string;
+  company: string;
+  city: string;
+  skills: string[];
+  bio: string;
+  photo: string;
+  joinDate: string;
+}
 
 const Dashboard: React.FC = () => {
-  // const [member, setMember] = useState([]);
+  const [member, setMember] = useState<Member | null>(null);
+  const [members, setMembers] = useState<Member[]>([]);
+
+  const getRandom = async () => {
+    try {
+      const response = await axios.get("http://localhost:3001/api/members/random");
+      console.log("response.data:", response.data);
+      setMember(response.data);
+    } catch (err) {
+      console.error("Erreur lors du chargement du membre :", err);
+    }
+  };
+
+  useEffect(() => {
+    getRandom();
+  }, []);
+
+  const fetchMembers = async () => {
+    try {
+      const response = await axios.get("/api/members/");
+      setMembers(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchMembers();
+  }, []);
 
   return (
     <div className="dashboard">
       <div className="intro">
         <div className="name">
-          <h1>Bonjour member.name !</h1>
+          {member && (
+            <h1>Bonjour {member.firstname} !</h1>
+          )}
           <p className="emoji">👋</p>
         </div>
         <p>Découvrez votre communauté Corworkspace et connecter-vous avec vos collègues</p>
@@ -73,40 +117,49 @@ const Dashboard: React.FC = () => {
       </div>
 
       <div className="grid">
-        <div className="discoverCommunity">
-          <h2>Découvrir la communauté</h2>
-          <p>Rencontrer un nouveau membre et élarissez votre réseau</p>
-          <div className="card">
-            <div className="blocImg">
-              <img src="" alt="member.firstname" />
+        {member && (
+          <div className="discoverCommunity">
+            <h2>Découvrir la communauté</h2>
+            <p>Rencontrer un nouveau membre et élarissez votre réseau</p>
+            <div className="card">
+              <div className="blocImg">
+                <img src={member.photo} alt={member.firstname} />
+              </div>
+              <h2>{member.firstname} {member.lastname}</h2>
+              <p>{member.profession}</p>
+              <p>{member.company} • {member.city}</p>
+              <div className="skills">
+                {member.skills?.map((skill, index) => (
+                  <div className="skill" key={index}>{skill}</div>
+                ))}
+              </div>
+              <p className="desc">"{member.bio}"</p>
+              <button onClick={getRandom}><TfiReload fill="white" /> Découvrir un autre membre</button>
             </div>
-            <h2>member.firstname member.lastname</h2>
-            <p>member.profession</p>
-            <p>member.company • member.city</p>
-            <div className="skills">
-              <div className="skill">member.skill</div>
-              <div className="skill">member.skill</div>
-            </div>
-            <p className="desc">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."</p>
-            <button><TfiReload fill="white" /> Découvrir un autre membre</button>
           </div>
-        </div>
+        )};
 
         <div className="recentActivity">
           <h2>Activité récente</h2>
           <p>Les dernières nouvelles de votre communauté</p>
-          {/* {member.map((member) => { */}
-          <div className="newMembers">
-            <div className="memberBloc">
-              <div className="membersInfos">
-                <p className="title">Nouveau membre rejoint</p>
-                <p>member.nom (member.profession) a rejoint la communauté</p>
+          {members?.map((member) => {
+            const joinDate = new Date(member.joinDate);
+            const now = new Date();
+            const diffHours = Math.floor((now.getTime() - joinDate.getTime()) / (1000 * 60 * 60));
+
+            return (
+              <div className="newMembers" key={member.id}>
+                <div className="memberBloc">
+                  <div className="membersInfos">
+                    <p className="title">Nouveau membre rejoint</p>
+                    <p>{member.firstname} {member.lastname} ({member.profession}) a rejoint la communauté</p>
+                  </div>
+                  <p className="date">Il y a {diffHours}h</p>
+                </div>
+                <span className="line"></span>
               </div>
-              <p className="date">Il y a 2h</p>
-            </div>
-            <span className="line"></span>
-          </div>
-          {/* })} */}
+            );
+          })}
         </div>
       </div>
     </div>
