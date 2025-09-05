@@ -1,11 +1,11 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { FaLinkedin } from "react-icons/fa";
-import { FaCalendar } from "react-icons/fa";
-import { FaBuilding } from "react-icons/fa6";
-import { RiMapPin2Fill } from "react-icons/ri";
-import { FaHandshake } from "react-icons/fa";
-import { FaEye } from "react-icons/fa";
+import {useState, useEffect} from "react";
+import {FaLinkedin} from "react-icons/fa";
+import {FaCalendar} from "react-icons/fa";
+import {FaBuilding} from "react-icons/fa6";
+import {RiMapPin2Fill} from "react-icons/ri";
+import {FaHandshake} from "react-icons/fa";
+import {FaEye} from "react-icons/fa";
 import axios from "axios";
 
 interface Member {
@@ -36,14 +36,15 @@ const Community: React.FC = () => {
             }
         };
 
-        fetchMembers();
+        fetchMembers().then(() => console.log("members fetched successfully"));
     }, []);
 
     return (
         <div className="communityPage">
             <div className="intro">
                 <h1>Découvrez la communauté</h1>
-                <p>Rencontrez des professionnels passionnés, échangez vos compétences et <br /> développez votre réseau</p>
+                <p>Rencontrez des professionnels passionnés, échangez vos compétences et <br/> développez votre réseau
+                </p>
             </div>
 
             <div className="stats">

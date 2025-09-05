@@ -26,6 +26,7 @@ export interface MemberData {
     bio: string;
     linkedinUrl?: string;
     isManager: boolean;
+    friendsList?: string[];
 }
 
 const REQUIRED_FIELDS: (keyof MemberData)[] = [
@@ -42,6 +43,7 @@ const REQUIRED_FIELDS: (keyof MemberData)[] = [
     "profession",
     "company",
     "membershipType",
+    "friendsList"
 ];
 
 export class Member {
@@ -64,6 +66,7 @@ export class Member {
     public readonly bio: string;
     public readonly linkedinUrl?: string;
     public readonly isManager: boolean;
+    public readonly friendsList?: string[];
 
     constructor(data: MemberData) {
         this.id = data.id;
@@ -85,6 +88,7 @@ export class Member {
         this.bio = data.bio;
         this.linkedinUrl = data.linkedinUrl;
         this.isManager = data.isManager;
+        this.friendsList = data.friendsList;
     }
 
     /**
@@ -180,5 +184,9 @@ export class Member {
 
     hasConflictWith(members: Member[]) {
         return members.some(member => member.email === this.email);
+    }
+
+    getFriendsList() {
+        return this.friendsList;
     }
 }
