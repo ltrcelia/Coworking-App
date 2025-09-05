@@ -5,6 +5,7 @@ import { FaUsers } from "react-icons/fa";
 import { FaCalendar } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
+import { MdLogin } from "react-icons/md";
 
 const Navbar: React.FC = () => {
 
@@ -21,35 +22,35 @@ const Navbar: React.FC = () => {
           <h2>CoworkSpace</h2>
         </div>
         <ul role="list">
-          <NavLink to="/">
+          <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
             <li>
               <FaHouse fill="grey" /> Dashboard
             </li>
           </NavLink>
-          <NavLink to="/communaute">
+          <NavLink to="/communaute" className={({ isActive }) => (isActive ? "active" : "")}>
             <li>
               <FaUsers fill="grey" size={22} /> Communauté
             </li>
           </NavLink>
-          <NavLink to="/evenements">
+          <NavLink to="/evenements" className={({ isActive }) => (isActive ? "active" : "")}>
             <li>
               <FaCalendar fill="grey" /> Événements
             </li>
           </NavLink>
-          <NavLink to="/parametres">
+          <NavLink to="/parametres" className={({ isActive }) => (isActive ? "active" : "")}>
             <li>
               <FaGear fill="grey" /> Paramètres
             </li>
           </NavLink>
-          <NavLink to="/mon-profil">
+          <NavLink to="/mon-profil" className={({ isActive }) => (isActive ? "active" : "")}>
             <span className="round"></span>
             <li>
-              Mon profil
+              <FaUser fill="grey" /> Profil
             </li>
           </NavLink>
-          <NavLink to="/connexion">
+          <NavLink to="/connexion" className={({ isActive }) => (isActive ? "active" : "")}>
             <li>
-              <FaUser fill="grey" />
+              <MdLogin fill="grey" size={25} />
             </li>
           </NavLink>
         </ul>

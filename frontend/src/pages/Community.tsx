@@ -72,7 +72,7 @@ const Community: React.FC = () => {
                     <span>member.memberShip</span>
                     <div className="name">
                         <div className="blocImg">
-                            <img src="member.photo" alt="member.firstname" />
+                            <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="member.firstname" />
                         </div>
                         <div className="blocText">
                             <h3>member.firstname</h3>

@@ -4,6 +4,11 @@
     p {
         color: rgba(0, 0, 0, 0.5);
     }
+    h3 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
     .card {
         .header {
             background: linear-gradient(70deg, #6973DA, #7355B1);
@@ -23,6 +28,11 @@
                 margin-bottom: 20px;
                 border: 4px solid #cacbdd;
                 margin-bottom: 40px;
+                img {
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 50px;
+                }
             }
             .blocPhoto {
                 background-color: #fff;
@@ -38,5 +48,80 @@
                 margin: 10px;
             }
         }
+    }
+    .info {
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        border-radius: 0 0 20px 20px;
+        .col2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            .card {
+                background-color: #F8FAFC;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: 20px;
+                padding: 20px;
+                h3 {
+                    margin: 0;
+                }
+                
+            }
+        }
+    }
+    .blocBio {
+        background-color: #F8FAFC;
+        margin-top: 30px;
+        border-radius: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        h3 {
+            margin: 0;
+        }
+        textarea {
+            height: 100px;
+            padding: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+    }
+    .security {
+        background-color: #FEF7ED;
+        border-radius: 20px;
+        border: 1px solid #ea570d2d;
+        margin-top: 30px;
+        padding: 30px;
+        .relative {
+            position: relative;
+            .icone {
+                position: absolute;
+                top: 34px;
+                right: 15px;
+            }
+        }
+        h3 {
+            margin: 0;
+            color: #9A3413;
+        }
+        
+    }
+    .bloc {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 15px;
+        margin-top: 20px;
+
+        label {
+            color: rgba(0, 0, 0, 0.5);
+            font-size: 14px;
+        }
+        input {
+            padding: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        
     }
 }

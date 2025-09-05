@@ -61,6 +61,11 @@
                     width: 60px;
                     height: 60px;
                     border-radius: 70px;
+                    img {
+                        height: 100%;
+                        object-fit: cover;
+                        border-radius: 50px;
+                    }
                 }
                 .blocText {
                     h3 {

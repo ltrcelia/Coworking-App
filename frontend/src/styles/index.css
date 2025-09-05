@@ -30,6 +30,20 @@ nav .navbar ul a {
   text-decoration: none;
   padding: 10px 15px;
 }
+nav .navbar ul a.active {
+  background-color: #EFF2FD;
+  border-radius: 10px;
+  color: #677FEA;
+}
+nav .navbar ul a.active .round {
+  background-color: #677FEA;
+}
+nav .navbar ul a.active li {
+  color: #677FEA;
+}
+nav .navbar ul a.active li svg {
+  fill: #677FEA;
+}
 nav .navbar ul a:hover {
   background-color: #EFF2FD;
   border-radius: 10px;
@@ -40,6 +54,9 @@ nav .navbar ul a:hover .round {
 }
 nav .navbar ul a:hover li {
   color: #677FEA;
+}
+nav .navbar ul a:hover li svg {
+  fill: #677FEA;
 }
 nav .navbar ul a li {
   display: flex;
@@ -422,6 +439,12 @@ nav .navbar .logo .square .img {
   margin-bottom: 20px;
   border: 4px solid #cacbdd;
 }
+.dashboard .grid .discoverCommunity .card .blocImg img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50px;
+}
 
 .communityPage {
   padding: 50px 100px;
@@ -490,6 +513,12 @@ nav .navbar .logo .square .img {
   width: 60px;
   height: 60px;
   border-radius: 70px;
+}
+.communityPage .community .card .name .blocImg img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50px;
 }
 .communityPage .community .card .name .blocText h3 {
   font-size: 16px;
@@ -568,6 +597,11 @@ nav .navbar .logo .square .img {
 .profilPage p {
   color: rgba(0, 0, 0, 0.5);
 }
+.profilPage h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .profilPage .card .header {
   background: linear-gradient(70deg, #6973DA, #7355B1);
   height: 300px;
@@ -588,6 +622,12 @@ nav .navbar .logo .square .img {
   border: 4px solid #cacbdd;
   margin-bottom: 40px;
 }
+.profilPage .card .header .blocImg img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50px;
+}
 .profilPage .card .header .blocPhoto {
   background-color: #fff;
   padding: 7px;
@@ -600,4 +640,75 @@ nav .navbar .logo .square .img {
 .profilPage .card .header p {
   color: #fff;
   margin: 10px;
+}
+.profilPage .info {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 0 0 20px 20px;
+}
+.profilPage .info .col2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+.profilPage .info .col2 .card {
+  background-color: #F8FAFC;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+}
+.profilPage .info .col2 .card h3 {
+  margin: 0;
+}
+.profilPage .blocBio {
+  background-color: #F8FAFC;
+  margin-top: 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+.profilPage .blocBio h3 {
+  margin: 0;
+}
+.profilPage .blocBio textarea {
+  height: 100px;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+.profilPage .security {
+  background-color: #FEF7ED;
+  border-radius: 20px;
+  border: 1px solid rgba(234, 87, 13, 0.1764705882);
+  margin-top: 30px;
+  padding: 30px;
+}
+.profilPage .security .relative {
+  position: relative;
+}
+.profilPage .security .relative .icone {
+  position: absolute;
+  top: 34px;
+  right: 15px;
+}
+.profilPage .security h3 {
+  margin: 0;
+  color: #9A3413;
+}
+.profilPage .bloc {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+.profilPage .bloc label {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+}
+.profilPage .bloc input {
+  padding: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }/*# sourceMappingURL=index.css.map */
