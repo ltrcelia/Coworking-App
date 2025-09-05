@@ -16,6 +16,20 @@ nav {
                 color: #64748B;
                 text-decoration: none;
                 padding: 10px 15px;
+                &.active {
+                    background-color: #EFF2FD;
+                    border-radius: 10px;
+                    color: #677FEA;
+                    .round {
+                        background-color: #677FEA;
+                    }
+                    li {
+                        color: #677FEA;
+                        svg {
+                            fill: #677FEA;
+                        }
+                    }
+                }
                 &:hover {
                     background-color: #EFF2FD;
                     border-radius: 10px;
@@ -25,6 +39,9 @@ nav {
                     }
                     li {
                         color: #677FEA;
+                        svg {
+                            fill: #677FEA;
+                        }
                     }
                 }
                 li {

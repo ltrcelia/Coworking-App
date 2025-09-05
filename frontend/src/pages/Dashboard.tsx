@@ -123,14 +123,14 @@ const Dashboard: React.FC = () => {
           <p>Rencontrer un nouveau membre et élarissez votre réseau</p>
           <div className="card">
             <div className="blocImg">
-              <img src="member.photo" alt="member.firstname" />
+              <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="member.firstname" />
             </div>
             <h2>member.firstname member.lastname</h2>
             <p>member.profession</p>
             <p>member.company • member.city</p>
             <div className="skills">
               {/* member.skills?.map((skill, index) => ( */}
-              <div className="skill">Figma</div>
+              <div className="skill">member.skills</div>
               {/* ))} */}
             </div>
             <p className="desc">"member.bio"</p>
